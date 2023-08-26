@@ -1,0 +1,1 @@
+Memoization is a programming technique that aims at making functions more efficient by caching computed returns via indexing.
