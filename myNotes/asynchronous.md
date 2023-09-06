@@ -45,7 +45,7 @@ JavaScript continues interpreting code after encountering a callback function du
     Event Loop and Event Queue:
     JavaScript uses an event loop to manage asynchronous operations. The event loop continuously checks the event queue for tasks to execute. When an asynchronous task is completed, it's placed in the event queue.
 
-    Callback Registration:
+    Callback Registration:x
     When you pass a callback function as an argument to an asynchronous function (e.g., a timer, an AJAX request, or a file read operation), the callback function is registered to be executed when the asynchronous task is finished. The JavaScript runtime doesn't execute the callback immediately; it schedules it to be executed later.
 
     Non-Blocking Execution:
