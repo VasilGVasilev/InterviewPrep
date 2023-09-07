@@ -70,12 +70,14 @@ In the case of promises, the promise is set into the microtask queue which the e
 Thus, with simple words, the Javascript runtime adds threads and concurrency to the otherise, single threaded programming langauge.
 So what happens when we make use of promises and callbacks -> we invert the control. The code result becomes dependant on an external factor, namely, the additional features that come with every Javascript runtime. Control of execution is inverted and handed over to an external entity as described above.\
 
+\
+\
+\
+\
+\
 
 
-
-
-
-see this (article)[https://medium.com/@monuchaudhary/single-threaded-non-blocking-asynchronous-and-concurrent-nature-of-javascript-a0d5483bcf4c]
+see this [article](https://medium.com/@monuchaudhary/single-threaded-non-blocking-asynchronous-and-concurrent-nature-of-javascript-a0d5483bcf4c)
 
 What happens when you run a JavaScript code?
 
