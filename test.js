@@ -1,8 +1,25 @@
-function Person (name){
+// function Person (name){
+//     this.name = name;
+// }
+
+// let john = new Person('John')
+
+// let a = new Object()
+// let b = Object.create(null);
+
+// Constructor function
+function Person (name) {
     this.name = name;
 }
+let john = new Person('john')
+console.log(john);
 
-let john = new Person('John')
+// Class syntax
+class Dog {
+    constructor (name) {
+        this.name = name;
+    }
+}
 
-let a = new Object()
-let b = Object.create(null);
+let bauwi = new Dog('bauwi')
+console.log(bauwi);
