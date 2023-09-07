@@ -49,9 +49,9 @@ When we say single threaded we refer to the execution mechanism of the JS engine
 
 So, back to the current problem, single threaded means only one call stack. One call stack, in turn, means only one piece of code can be executed at a time. In our case with console.log('Fetching data...') and fetchData function, given the nature of Javascript to be non-blocking, Javascript does not wait for the response of the callback, but moves on with the interpretation of the subsequent blocks of code.
 Finally, the answer -> the callback is 'extracted' from the JS engine flow of execution onto a separate thread. Thus, concurrency becomes possible. 
-But where is this callback 'extracted'? 
-It depends. 
-In the case of callbacks, the Timer Web API sets the setTimeout as a task in the queue. This queue is managed by the event loop which await for the call stack to be cleared of any functions and then proceedes to add the callback set as a task in the queue. Thus, why the delay set in setTimeout is also known as minimum delay time. Because it is unclear when the call stack will be freed up exactly so that a new event cycle can be executed.
+But where is this callback 'extracted'?
+The general answer is that any such asynchronious function utilizes the Web API by relying on the event loop to manage its queue priority to re-enter the Javascript engine event cycle.
+In the case of callbacks, the Timer Web API sets the setTimeout as a task in the task queue. This queue is managed by the event loop which awaits for the call stack to be cleared of any functions and then proceeds to add the callback set as a task in the queue. That is why the delay set in setTimeout is also known as minimum delay time. Because it is unclear when the call stack will be freed up exactly so that a new event cycle can be executed.
 
 **Promises**
 
@@ -67,8 +67,9 @@ promise.then(res=>console.log(res))
 
 In the case of promises, the promise is set into the microtask queue which the event loop ranks with higher priority than regular tasks such as setTimeout callbacks. Meaning when/if a promise is fulfilled, its then method is added to the microtask queue, ensuring that it will be executed before the next task in the event loop.
 
-Thus, with simple words, the Javascript runtime adds threads and concurrency to the otherise, single threaded programming langauge.
-So what happens when we make use of promises and callbacks -> we invert the control. The code result becomes dependant on an external factor, namely, the additional features that come with every Javascript runtime. Control of execution is inverted and handed over to an external entity as described above.\
+Thus, with simple words, the Javascript runtime adds threads and concurrency to the otherwise, single threaded programming language.
+So what happens when we utilize promises and callbacks -> we invert the control. The code result becomes dependant on an external factor, namely, the additional features that come with every Javascript runtime. Control of execution is inverted and handed over to an external entity as described above.
+
 
 \
 \
