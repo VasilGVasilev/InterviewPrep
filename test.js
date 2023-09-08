@@ -1,11 +1,7 @@
-// function Person (name){
-//     this.name = name;
-// }
+// Object create
 
-// let john = new Person('John')
-
-// let a = new Object()
-// let b = Object.create(null);
+let a = new Object()
+let b = Object.create(null);
 
 // Constructor function
 function Person (name) {
@@ -23,3 +19,5 @@ class Dog {
 
 let bauwi = new Dog('bauwi')
 console.log(bauwi);
+
+
