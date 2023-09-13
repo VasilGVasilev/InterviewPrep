@@ -12,3 +12,6 @@ console.log(!!truthy)
 ```sh
 Object.entries(obj).lenght === 0 && obj.constructor === Object
 ```
+
+
+Q 194
