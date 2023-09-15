@@ -35,4 +35,4 @@ For virtual DOM manipulation, React leaves us a leeway via useRef:
 
 For window object tempering -> It is generally discouraged since avoiding the official prescribed way may result in an unwanted behaviour. A framework is after all is like a metaapp, it build another app to communicate with the browser in this case and skipping the tools provided and bypassing that extra layer with traditional approach is obviously prone to mistakes.
 
-Q303
+Q319
