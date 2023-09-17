@@ -43,4 +43,35 @@ getting unique values
 console.log([...new Set([1, 2, 4, 4, 3])]);
 ```
 
-Q375
+
+
+
+flatten a multi-dimensional array -> recursion
+
+```sh
+
+const multiDimensionalArr = [11, [22, 33], [44, [55, 66, [77, [88]], 99]]];
+
+function flattenArr (arr) {
+    let flattened = [].concat(...arr);
+    return flattened.some(item => Array.isArray(item)) ? flattenArr(arr) : flattened;
+}
+
+flattenArr(multiDimensionalArr)
+```
+
+
+
+
+multi-conditional checking
+
+```sh
+// Verbose approach
+if (input === 'first' || input === 1 || input === 'second' || input === 2) {
+  someFunction();
+}
+// Shortcut
+if (['first', 1, 'second', 2].indexOf(input) !== -1) {
+  someFunction();
+}
+```
