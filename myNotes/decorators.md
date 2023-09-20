@@ -45,3 +45,41 @@ console.log(myFunction(10));
 ```
 
 You can see how with the @decorator syntax we can actually apply the decorator when needed only
+
+Decorator example
+```sh
+function decorator(fn){
+    return function(){
+        console.log('Hello, world!')
+        const result = fn();
+        return result;
+    }
+}
+
+
+@decorator
+function myName(){
+    console.log('Vasil')
+}
+
+myName()
+```
+
+
+BUT to use decorators, you need to use a transpiler such as Babel or TypeScript.
+
+HOF example
+```sh
+function decorator(fn){
+  return function(){
+      console.log('Hello, world!')
+      const result = fn();
+      return result;
+  }
+}
+
+
+const myName = decorator(() =>console.log('Vasil'))
+
+myName()
+```

@@ -21,9 +21,22 @@
 // console.log(bauwi);
 
 
-for (let i = 0; i < 4; i++) {
-    console.log('for loop iteration', i)
-    setTimeout(() => {
-      console.log('block scope return of callback value', i); // Each callback captures its own block-scoped `i`
-    });
+// for (let i = 0; i < 4; i++) {
+//     console.log('for loop iteration', i)
+//     setTimeout(() => {
+//       console.log('block scope return of callback value', i); // Each callback captures its own block-scoped `i`
+//     });
+//   }
+
+function decorator(fn){
+  return function(){
+      console.log('Hello, world!')
+      const result = fn();
+      return result;
   }
+}
+
+
+const myName =  decorator(() =>console.log('Vasil'))
+
+myName()
