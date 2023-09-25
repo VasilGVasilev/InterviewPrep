@@ -21,7 +21,7 @@ How is it when I use vscode and set the type, vscode serves as a linter and sugg
 
 First, it is necessary to make a certain distinguishment between statically and dynamically typed languages.
 
-See the following image
+![alt img](https://github.com/VasilGVasilev/InterviewPrep/blob/main/public/compile-run-time.png)
 
 
 Each program needs to be reduced to a computer comprehensible language. The static typed languages do their type checking at compile time, while JS does it at run time (as a dynamic language). With simple words, 
