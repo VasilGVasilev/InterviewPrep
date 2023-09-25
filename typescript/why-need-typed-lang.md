@@ -35,3 +35,6 @@ Thus:
 
 Static -> 1. Check types | 2. Run
 Dynamic -> 1. Run | 2. Check types
+
+
+React docs suggest Typescript (Microsoft) and Flow (FB) as compile time checkers.

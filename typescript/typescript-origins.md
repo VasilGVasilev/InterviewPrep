@@ -4,3 +4,6 @@ Prior to TS, Microsoft did not have the open source know-how not to speak of ope
 
 The creator of TS was actually first tasked with the completion of VSCode.
 
+Angular 2.0 was the re-write of AngularJS with TS as main language.
+
+That made a vacuum for developers distancing from Angular obliging the use of TS. A vacuum filled by React which set no new rules, just plain JS.
