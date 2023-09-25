@@ -1,4 +1,4 @@
-When Typesscript was created there was a vacuum of all the Javascript's ecosystem that was not really usable in typescript because packages did not have types themselves. So how do we adjust JS libraries to TS?
+When Typescript was created there was a vacuum of all the Javascript's ecosystem that was not really usable in typescript because packages did not have types themselves. So how do we adjust JS libraries to TS?
 
 We create Declaration files (.d.ts)
 
