@@ -7,3 +7,5 @@ The creator of TS was actually first tasked with the completion of VSCode.
 Angular 2.0 was the re-write of AngularJS with TS as main language.
 
 That made a vacuum for developers distancing from Angular obliging the use of TS. A vacuum filled by React which set no new rules, just plain JS.
+
+The biggest competitor to TS(MS) was Flow(FB). Flow has the idea of contextually inferring JS types, so if you set a variable to be a number, it will infer and set all subsequent instances of this variable to be of the type number. Flow was intially an internal project that type checks the FB codebase and cedeing to its rival popularity continued to be so, the team redirected their focus on imporoving Flow for internal needs.
