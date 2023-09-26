@@ -1,0 +1,1 @@
+I need an explanation on why we use generics at all, it is a step more specified than any, but still, you can put in any type prop.

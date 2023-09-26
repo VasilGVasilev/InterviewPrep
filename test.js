@@ -40,4 +40,3 @@ function decorator(fn){
 const myName =  decorator(() =>console.log('Vasil'))
 
 myName()
-

@@ -345,15 +345,64 @@ interface User {
   role: RoleTypes;
 }
 ```
-```sh
+
 
 if(defaultUser.role === 'admin') {
 ...
 }
-// vs 
+
+vs 
+
 if(defaultUser.role ===  ReadingTypes.Admin) {
 ...
 }
+
+
+7. Working with Arrays
+
+```sh
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: "admin" | "user" | "super-admin";
+  posts: Post;
+}
+
+interface Post {
+  id: number;
+  title: string;
+}
+
+export const defaultUser: User = {
+  id: 1,
+  firstName: "Matt",
+  lastName: "Pocock",
+  role: "admin",
+  posts: [
+    {
+      id: 1,
+      title: "How I eat so much cheese",
+    },
+    {
+      id: 2,
+      title: "Why I don't eat more vegetables",
+    },
+  ],
+};
+
 ```
 
+We need to update the posts: to be of the following two possible types:
 
+posts: Post[] OR posts: Array<Post> 
+
+**the Array type is a actually a generic type**
+
+
+
+Sidenote from TotalTypescript:
+
+Why doesn't Typescript throw an error when we do not specify the return type of a function, but does throw an error when we do not specify the type of the function's props?
+
+**Because Typescript will infer the type from the function body, provided the props used have specified types.**
