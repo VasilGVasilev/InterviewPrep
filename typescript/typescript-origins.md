@@ -13,3 +13,5 @@ The biggest competitor to TS(MS) was Flow(FB). Flow has the idea of contextually
 According to the creator of TS, the moment you start using VS Code to write JS, you use TS. He differentiates between TS the syntax and TS the tool. He refers to the second, the TS compiler, when saying the thing about VS Code, since the TS compiler has no problem inferring types via JSDocs or by inferring types onto plain JS and then still producing JS code. 
 
 When the TypeScript compiler reads plain JavaScript, it does infer its own types. However, it does not disregard these types when it produces the plain JavaScript result. Instead, the TypeScript compiler uses the inferred types to generate more efficient and optimized JavaScript code.
+
+**Why do we need types, in general? - Basically, types allow for autocomplete and sensible errors.**
