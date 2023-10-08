@@ -30,7 +30,7 @@ Parameter 'b' implicitly has an 'any' type.
 
 Solution:
 
-You need to explicitly add type annotations. (a: number, b:number)
+You need to explicitly add type annotations. (a: number, b: number)
 
 ```sh
 import { expect, it } from "vitest";
@@ -216,11 +216,13 @@ you may see this
 ```
 but that means you still need to pass either string or undefined, cannot opt out of a last argument
 
+
 4. Optional Parameters 
 
 The same rule goes for parameters as a whole
 
 **Mind you cannot have the optional parameter be in front of a obligatory parameter**
+
 
 5. Assigning Types to Variables:
 
@@ -406,3 +408,81 @@ Sidenote from TotalTypescript:
 Why doesn't Typescript throw an error when we do not specify the return type of a function, but does throw an error when we do not specify the type of the function's props?
 
 **Because Typescript will infer the type from the function body, provided the props used have specified types.**
+
+9. Function return type annotations
+
+```sh
+import { expect, it } from "vitest";
+
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: "admin" | "user" | "super-admin";
+  posts: Array<Post>;
+}
+
+interface Post {
+  id: number;
+  title: string;
+}
+
+/**
+ * How do we ensure that makeUser ALWAYS
+ * returns a user?
+ */
+const makeUser = () => {
+  return {};
+};
+
+it("Should return a valid user", () => {
+  const user = makeUser();
+
+  expect(user.id).toBeTypeOf("number");
+  expect(user.firstName).toBeTypeOf("string");
+  expect(user.lastName).toBeTypeOf("string");
+  expect(user.role).to.be.oneOf(["super-admin", "admin", "user"]);
+
+  expect(user.posts[0].id).toBeTypeOf("number");
+  expect(user.posts[0].title).toBeTypeOf("string");
+});
+
+```
+
+Just add User as the return type of the function
+
+```sh
+const makeUser = (): User => {
+  return {
+    id: 1,
+    firstName: "Vasil",
+    lastName: "Vasilev",
+    role: "admin",
+    posts: [
+      {
+        id: 1,
+        title: "Hello",
+      },
+    ],
+  };
+};
+```
+
+even if you are missing role for example, due to setting the return type of the function as User, TS will enable you to auto-complete:
+
+```sh
+const makeUser = (): User => {
+  return {
+    id: 1,
+    firstName: "Vasil",
+    lastName: "Vasilev",
+    posts: [
+      {
+        id: 1,
+        title: "Hello",
+      },
+    ],
+    ...autocomplete
+  };
+};
+```
