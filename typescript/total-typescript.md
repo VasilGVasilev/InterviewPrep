@@ -521,7 +521,7 @@ Another way is to **cast data as Type**, but this is like mandating that TS acce
 return data as LukeSkywalker;
 ```
 
-NB: Mind that **[res.josn() return a promise](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)**, so we need to adequatly prepare TS for the return type.
+NB: Mind that **[res.json() return a promise](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)**, so we need to *prepare* TS for the return type.
 Alternatively, if we have a state, we can directly update the state with the actual data, not the promise it wraps around that data:
 
 ```sh
