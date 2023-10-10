@@ -409,7 +409,7 @@ Why doesn't Typescript throw an error when we do not specify the return type of 
 
 **Because Typescript will infer the type from the function body, provided the props used have specified types.**
 
-9. Function return type annotations
+8. Function return type annotations
 
 ```sh
 import { expect, it } from "vitest";
@@ -485,4 +485,49 @@ const makeUser = (): User => {
     ...autocomplete
   };
 };
+```
+
+
+9. Typing Promises and Async Requests
+
+```sh
+interface LukeSkywalker {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+}
+
+export const fetchLukeSkywalker = async (): LukeSkywalker => {
+  const data = await fetch("https://swapi.dev/api/people/1").then((res) => {
+    return res.json();
+  });
+
+  return data;
+};
+
+```
+
+Mind that the return type of this async function is actually a Promise, so TS prompts you to use the default special Promise type -> **Promise<T>**
+*The return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<LukeSkywalker>'?*
+
+Another way is to **cast data as Type**, but this is like mandating that TS accept this type, so be careful:
+
+```sh
+return data as LukeSkywalker;
+```
+
+NB: Mind that **[res.josn() return a promise](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)**, so we need to adequatly prepare TS for the return type.
+Alternatively, if we have a state, we can directly update the state with the actual data, not the promise it wraps around that data:
+
+```sh
+fetch('https://swapi.dev/api/people/2')
+    .then(res => res.json())
+    .then(result => {
+        setCharacters(result)
+    })
 ```
