@@ -560,3 +560,66 @@ it("Should be typed as an array of strings", () => {
 });
 
 ```
+
+
+you need to use a generic -> 
+
+```sh
+const guitarists = new Set<string>();
+```
+
+NB: Mind when to use ':' and when '<>':
+
+In summary:
+
+- Use : for type annotations and specifying object property types.
+- Use <> for specifying generic types when working with data structures and creating reusable code that can work with different types.
+
+
+1. Colon ':'
+
+- Type Annotations: You use : when you want to provide a type annotation to a variable, parameter, or property. It's used to explicitly specify the type of a value. For example:
+
+```sh
+const myVariable: string = "Hello, World!";
+function greet(name: string): void {
+  console.log(`Hello, ${name}`);
+}
+```
+
+- Object Properties: You use : when defining the types of object properties. For example:
+
+```sh
+const person: { name: string, age: number } = {
+  name: "John",
+  age: 30
+};
+```
+
+2. Angle Brackets <>
+
+- Generics: You use angle brackets to specify generic types when working with data structures like arrays, sets, and classes. It allows you to create reusable code that can work with different types. (**[see the TS source code, those data structures' interfaces actually use generics](https://github.com/Microsoft/TypeScript/blob/main/src/lib/es2015.core.d.ts)**) For example:
+
+```sh
+const numbers: Array<number> = [1, 2, 3];
+const names: Array<string> = ["Alice", "Bob", "Charlie"];
+interface Props {
+  name: string;
+}
+# mind that the above is discouraged because it sets the type of the whole PrintName, so a bit of an anti-example
+
+const PrintName: React.FC<Props> = (props) => {
+  ...
+}
+
+class Container<T> {
+  value: T;
+  constructor(value: T) {
+    this.value = value;
+  }
+}
+
+const numContainer = new Container<number>(42);
+const strContainer = new Container<string>("Hello, World!");
+```
+
