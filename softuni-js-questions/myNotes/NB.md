@@ -89,4 +89,22 @@ Throttling is a technique in which, no matter how many times the user fires the 
 
 
 
-q408
+Basic Solution for Fibonacci:
+
+```sh
+const number = 5;
+
+// 0 1 1 2 3
+
+let n1 = 0;
+let n2 = 1;
+let nextTerm;
+
+
+for( let i = 0; i < number; i++){
+  console.log(n1);
+  nextTerm = n1 + n2;
+  n1 = n2;
+  n2 = nextTerm;
+}
+```
