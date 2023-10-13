@@ -25,7 +25,7 @@ In contrast, when you use let to declare the loop variable, each iteration of th
 
 VERY CRUCIAL for ASYNC Requests:
 
-Block scoping creates a context of its own reference points to which the async requests are connected. Thus, above we have a for loop with 4 seperate blocks for each iteration and for each of those blocks we have a different value of i, but in fact the reference to the memory in heap to that instance of i is also different (although all named the same - i). So each block triggers its own callback and when the loop is finished executing, we have the resolution of each of those callbacks 0123. 
+Block scoping creates a context of its own reference points to which the async requests are connected. Thus, above we have a for loop with 4 seperate blocks for each iteration and for each of those blocks we have a different value of i, **in fact, the reference to the memory in heap to that instance of i is also different (although all named the same - i)**. So each block triggers its own callback and when the loop is finished executing, we have the resolution of each of those callbacks 0123. 
 
 BUT, as it is in the case of global scope, in the case of block scope, the for loop finishes execution first and only then the callback returns are printed. 
 
