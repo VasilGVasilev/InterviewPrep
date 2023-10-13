@@ -83,3 +83,18 @@ const myName = decorator(() =>console.log('Vasil'))
 
 myName()
 ```
+
+
+Understand HOF simply:
+
+```sh
+function decorator(fn){
+    let m = fn() //here fn is executed and stored in m
+  return m //we return the m value which is the result of the fn execution
+}
+
+
+const myName = decorator(() =>console.log('Vasil'))
+
+myName()
+```
