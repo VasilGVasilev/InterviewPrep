@@ -25,7 +25,7 @@ a = true //a is a boolean
 
 
 
-virtual DOM
+**virtual DOM**
 
 What if we want to manipulate the virtual DOM or temper with the global browser object - window?
 For virtual DOM manipulation, React leaves us a leeway via useRef:
@@ -37,7 +37,7 @@ For window object tempering -> It is generally discouraged since avoiding the of
 
 
 
-Set
+**Set**
 getting unique values
 ```sh
 console.log([...new Set([1, 2, 4, 4, 3])]);
@@ -46,7 +46,7 @@ console.log([...new Set([1, 2, 4, 4, 3])]);
 
 
 
-flatten a multi-dimensional array -> recursion
+**flatten a multi-dimensional array** -> recursion
 
 ```sh
 
@@ -63,7 +63,7 @@ flattenArr(multiDimensionalArr)
 
 
 
-multi-conditional checking
+**multi-conditional checking**
 
 ```sh
 // Verbose approach
@@ -77,19 +77,19 @@ if (['first', 1, 'second', 2].indexOf(input) !== -1) {
 ```
 
 
-Wrapper Objects
+**Wrapper Objects**
 
 How do primitives have methods and properties when called upon when they are not Objects but primitives?
 Every primitive is temporarily converted to a Wrapper Objects enabling methods and properties, the Wrapper Objects are: String, Boolean, Number, Symbol, BigInt.
 
 
-Throttling and Debouncing
+**Throttling and Debouncing**
 Throttling is a technique in which, no matter how many times the user fires the event, the attached function will be executed only once in a given time interval. In the debouncing technique, no matter how many times the user fires the event, the attached function will be executed only after the specified time once the user stops firing the event. Thus, throttling executes the function at a regular interval, while debouncing executes the function only after some cooling period.
 
 
 
 
-Basic Solution for Fibonacci:
+**Basic Solution for Fibonacci:**
 
 ```sh
 const number = 5;
