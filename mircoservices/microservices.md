@@ -20,4 +20,29 @@ The mainstream approach people use for interacting with an information system is
 
 As our needs become more sophisticated we steadily move away from that model. We may want to look at the information in a different way to the record store, perhaps collapsing multiple records into one, or forming virtual records by combining information for different places. On the update side we may find validation rules that only allow certain combinations of data to be stored, or may even infer data to be stored that's different from that we provide.
 
+The change that CQRS introduces is to split that conceptual model into separate models for update and display, which it refers to as Command and Query respectively following the vocabulary of CommandQuerySeparation. The rationale is that for many problems, particularly in more complicated domains, having the same conceptual model for commands and queries leads to a more complex model that does neither well.
+
 **Basically, a step further than simple storing and retrieving records via CRUD, ex validation rules.**
+
+We could expand the last sentence, by emphasizing the difference between data-centric and event-driven architecture. It is almost self-explainatory, and it is a popoular opinion that event-driven architecture is to be preferred, *since web applications are more inline with reacting to clients' events than to be data-centric log/register of data.*
+
+**[Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html)**
+
+Event Sourcing ensures that all changes to application state are **stored as a sequence of events**. Not just can we query these events, we can also use the **event log** to reconstruct past states.
+
+
+
+**[Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/)**
+
+
+**Outbox Pattern**
+
+It ensures that a message was sent (e.g. to a queue) successfully at least once. With this pattern, instead of directly publishing a message to the queue, we store it in temporary storage (e.g. database table). We’re wrapping the entity save and message storing with the Unit of Work (transaction). By that, we’re ensuring that the message won’t be lost if the application data is stored. It will be published later through a background process. This process will check if there are any unsent messages in the table. When the worker finds any, it tries to send them. After it gets confirmation of publishing (e.g. ACK from the queue), it marks the event as sent.
+
+Why does it provide at-least-once and not exactly-once? Writing to the database may fail (e.g. it will not respond). When that happens, the process handling outbox pattern will try to resend the event after some time and try to do it until the message is correctly marked as sent in the database.
+
+**Inbox Pattern** 
+
+It is similar to Outbox Pattern. It’s used to handle incoming messages (e.g. from a queue). Accordingly, we have a table in which we’re storing incoming events. Contrary to outbox pattern, we first save the event in the database, then we’re returning ACK to queue. If save succeeded, but we didn’t return ACK to queue, then delivery will be retried. That’s why we have at-least-once delivery again. After that, an outbox-like process runs. It calls message handlers that perform business logic.
+
+You can simplify the implementation by calling handlers immediately and sending ACK to the queue when they succeeded. The benefit of using additional table is ability to quickly accept events from the bus. Then they’re processed internally at a convenient pace minimising the impact of transient errors.
