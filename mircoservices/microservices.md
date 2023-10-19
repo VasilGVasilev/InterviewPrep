@@ -46,3 +46,10 @@ Why does it provide at-least-once and not exactly-once? Writing to the database 
 It is similar to Outbox Pattern. It’s used to handle incoming messages (e.g. from a queue). Accordingly, we have a table in which we’re storing incoming events. Contrary to outbox pattern, we first save the event in the database, then we’re returning ACK to queue. If save succeeded, but we didn’t return ACK to queue, then delivery will be retried. That’s why we have at-least-once delivery again. After that, an outbox-like process runs. It calls message handlers that perform business logic.
 
 You can simplify the implementation by calling handlers immediately and sending ACK to the queue when they succeeded. The benefit of using additional table is ability to quickly accept events from the bus. Then they’re processed internally at a convenient pace minimising the impact of transient errors.
+
+
+<!-- todo -->
+
+https://www.freecodecamp.org/news/how-to-use-react-server-components/
+https://www.freecodecamp.org/news/object-oriented-javascript-for-beginners/
+https://www.zautre.com/projects/
