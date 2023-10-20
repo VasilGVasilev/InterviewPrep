@@ -50,6 +50,6 @@ You can simplify the implementation by calling handlers immediately and sending 
 
 <!-- todo -->
 
-https://www.freecodecamp.org/news/how-to-use-react-server-components/
+
 https://www.freecodecamp.org/news/object-oriented-javascript-for-beginners/
 https://www.zautre.com/projects/
