@@ -48,8 +48,3 @@ It is similar to Outbox Pattern. It’s used to handle incoming messages (e.g. f
 You can simplify the implementation by calling handlers immediately and sending ACK to the queue when they succeeded. The benefit of using additional table is ability to quickly accept events from the bus. Then they’re processed internally at a convenient pace minimising the impact of transient errors.
 
 
-<!-- todo -->
-
-
-https://www.freecodecamp.org/news/object-oriented-javascript-for-beginners/
-https://www.zautre.com/projects/
