@@ -62,3 +62,36 @@ This is an equivalent to calling .bind:
 6. vDOM
 The Virtual DOM (VDOM) is an in-memory representation of Real DOM.
 Whenever any underlying data changes, the whole vDOM re-renders and compares with the last DOM representation, any differences are the nodes updated on the real DOM.
+
+7. super() vs super(props)
+
+super(props) should be used when passing on props
+```sh
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props); // { name: 'John', ... }
+  }
+}
+```
+
+super() should NOT be used when passing on props
+```sh
+class MyComponent extends React.Component {
+  constructor(props) {
+    super();
+    console.log(this.props); // undefined
+  }
+}
+```
+
+8. useEffect vs lifecycle methods
+
+In functional components, the useEffect Hook is used to replicate the functionality of the traditional lifecycle methods. 
+
+9. React vs Angular
+
+Main differences are:
+- React has unidirectional data flow, Angular has two-way data flow
+- React is a library and has only the View layer, Angualr is a framework so a total MVC is possible on it
+- React uses JSX, Angular separates HTML and JS
