@@ -1,3 +1,4 @@
+
 1. React top features:
 
 - JSX, a syntax extension allowing for JS be written directly in the HTML;
@@ -95,3 +96,7 @@ Main differences are:
 - React has unidirectional data flow, Angular has two-way data flow
 - React is a library and has only the View layer, Angualr is a framework so a total MVC is possible on it
 - React uses JSX, Angular separates HTML and JS
+
+10. Hooks
+
+Hooks allow for state manipulation without the need of classes. They are only applicable to Functional Components and should be set at the top of the component.
