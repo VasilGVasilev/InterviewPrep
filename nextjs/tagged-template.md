@@ -52,5 +52,7 @@ This SQL query is vulnerable to SQL injection attacks because the query builds t
 **The key is to sanithize the sql query from the picture, namely, parameterize it, so that the passed in dynamic argument does not constitute a separate malicious sql query, thus, one way is to use template literals, since it has separation of interpolated and non0-interpolated values.**
 
 [article explained](https://neon.tech/blog/sql-template-tags)
+<br>
 [video explained 1](https://www.youtube.com/watch?v=2Ggf45daK7k)
+<br>
 [video explained 2](https://www.tektutorialshub.com/typescript/typescript-tagged-templates/)
