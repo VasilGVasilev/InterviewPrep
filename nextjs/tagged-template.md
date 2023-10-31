@@ -40,9 +40,9 @@ function greet(strings: TemplateStringsArray, name: string){
 
 greet`hello world ${someVar}`
 
-# [LOG]: ["hello world ", ""] 
-# [LOG]: "John" 
-# [LOG]: "Hello John!" 
+// [LOG]: ["hello world ", ""] 
+// [LOG]: "John" 
+// [LOG]: "Hello John!" 
 
 ```
 
