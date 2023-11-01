@@ -108,3 +108,5 @@ for( let i = 0; i < number; i++){
   n2 = nextTerm;
 }
 ```
+
+make a this keyword explaination 
