@@ -1,0 +1,1 @@
+Build better API, in terms of structuring DB to be segmented, any new additional subexercise basically means -> add a DB entity; Also think in terms of what will happen if the request's time starts getting longer due to bigger resource, how to split that into meaningful self-contained DB entitites.
