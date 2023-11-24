@@ -70,7 +70,9 @@ So, it seems that SSR has the advantage of faster initial load time (FCP),but af
 React Server Components - the best of both worlds.
 
 
-RSC are the solution so that instead of having the whole page rendered on the server, you render the non-interactive parts, so that they have less intial loading time, while the interactive ones are rendered as per the CSR rule, the bundle for specific compnents being significantly smaller than for the whole page. So, far Next.js has a good approach in implementing RSC. All components are server rendered by default while client ones that have interactivity or using browser Web APIs are denoted as such with the directive 'use client'.
+RSC are the solution so that instead of having the whole page rendered on the server, you render the non-interactive parts, so that they have less intial loading time. Meanwhile the componentes that have user interactivity are rendered as per the CSR rule, the bundle to download on the client browser for specific CSR components being significantly smaller than if the whole page was based on CSR. So, far Next.js has a good approach in implementing RSC. All components are server rendered by default while client ones that have interactivity or using browser Web APIs are denoted as such with the directive 'use client'.
+
+In summary, RSC reduces SSR to specific components instead of the whole page, thus, enabling the interplay of having some components with SSR, others with CSR.
 
 
 
