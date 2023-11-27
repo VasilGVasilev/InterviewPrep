@@ -54,3 +54,39 @@ The question is not "when does this effect run" rather, "with which state does t
     useEffect(fn) // all state
     useEffect(fn, []) // no state
     useEffect(fn, [these states])
+
+
+
+Full example with useEffect():
+```sh
+import { useState, useEffect } from "react";
+
+export function useCounter() {
+    const [count, setValue] = useState(0);
+    const [isEven, setIsEven] = useState(false);
+
+    useEffect(() => {
+        if (count % 2 === 0) {
+        setIsEven(true);
+        } else {
+        setIsEven(false);
+        }
+    }, [count]);
+
+    const handleIncrement = () => {
+        setValue(count + 1);
+    };
+    const handleDecrement = () => {
+        setValue(count - 1);
+    };
+
+    return [count, isEven, handleIncrement, handleDecrement];
+}
+```
+
+The callback function inside the useEffect() hook sets 'isEven' to be false or true and it also uses 'count' in
+the dependency array to ensure that every time 'count' changes the function component useCounter will run.
+What Dan Abramov means by saying that the mental model for useEffect() is synchronisation not lifecycles is:
+useEffect() does not actively 'watch' for changes, after rendering finishes, useEffect will check the list of
+dependency values against the values from the last render, and will call your effect function if any one of them has changed.
+Thus, focus is not on entire application rather on the list of dependencies, lack of such does not alter the initial idea.
