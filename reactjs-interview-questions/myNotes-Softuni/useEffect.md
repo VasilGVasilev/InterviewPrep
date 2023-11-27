@@ -1,3 +1,5 @@
+Purpose: useEffect() helps you handle things that are outside the realm of React such as API calls, asynchronous events, and other **side effects**.
+
 ```sh
 const Songs = props => {
     const [songs, setSongs] = useState([])    
@@ -45,3 +47,10 @@ The second is an array [] called a dependency array.
 - If the array is omitted, the callback function will run every time the code changes. ---> infinite fetch render loop 
 - If the array is empty, the callback function will run once. /Initialization empty/ ---> like  componentDidMount()
 - If there is a value provided, the callback function will run each time the value changes. ---> like componentDidUpdate()
+
+BUT useEffect is not like a lifecycle method, rather applying a synchronisation mental model:
+
+The question is not "when does this effect run" rather, "with which state does this effect synchronize with":
+    useEffect(fn) // all state
+    useEffect(fn, []) // no state
+    useEffect(fn, [these states])
