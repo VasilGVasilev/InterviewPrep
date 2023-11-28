@@ -38,3 +38,7 @@ unmounting means removing component from DOM and has only one built-in method ->
 - setting props as a state
 
 Usually, it is either via props or via state and useEffect() in functional components that we deal with data, not combining them, but if you have to set props as a state, you have to use getDerivedStateFromProps (class components) or useEffect (functional components), because change of props will not automatically trigger a change of state (you change state explicitly via this.setState or setState).
+
+- useState operates via closure
+
+useState hook lets you persist information stored even during re-render, unlike, a simple variable storing, which will be lost at the moment browser re-renders content; this is accomplished via closures.
