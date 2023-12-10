@@ -48,7 +48,7 @@ const sayHello = function () {
 Inversly, **function declarations** are hoisted, since functions are pasted in full in memory component of execution contexts:
 
 ```sh
-sayHello() // ReferenceError
+sayHello() // Hello
 
 function sayHello () {
   console.log("Hello")
