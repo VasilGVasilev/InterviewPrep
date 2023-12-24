@@ -146,3 +146,51 @@ Anthony.chillTheCake()
 
 
 [see this](https://www.freecodecamp.org/news/an-introduction-to-programming-paradigms/#object-oriented-programming) 
+
+This is an add-on to my original observations
+
+My example of functional programming may be interpreted as procedural, by some, because of the closure. Instead it can achieve more immutability, composition and declarativeness:
+
+### Procedural:
+
+```sh
+# Procedural Programming Approach
+
+# Calculate the sum of squares of even numbers in a list
+
+def calculate_sum_of_squares(numbers):
+    total = 0
+    for num in numbers:
+        if num % 2 == 0:
+            total += num ** 2
+    return total
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = calculate_sum_of_squares(numbers)
+print("Procedural Programming Result:", result)
+```
+
+### Actually Functional:
+
+```sh
+# Functional Programming Approach
+
+# Calculate the sum of squares of even numbers using functional programming
+
+def is_even(number):
+    return number % 2 == 0
+
+def square(number):
+    return number ** 2
+
+def calculate_sum(numbers):
+    return sum(map(square, filter(is_even, numbers)))
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = calculate_sum(numbers)
+print("Functional Programming Result:", result)
+```
+
+[procedural vs functional](https://medium.com/@miladev95/sdfs-18a32b80a10d) 
+
+
