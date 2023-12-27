@@ -2,7 +2,7 @@ Use the following for basic differtentiation:
 
 Strong and static - Typescript
 Strong and dynamic - C
-Weak and static - Pyhton
+Weak and static - Python
 Weak and dynamic - Javascript
 
 A dynamic language can redefine variables:
