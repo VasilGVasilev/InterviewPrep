@@ -9,7 +9,7 @@ VScode setup:
 
 instead of using c:\php\php.exe for every command on you VScode powershell apply the following config to File > Preference > Settings
 
-Running php files
+Running php files:
 
 PHP is a server side language, so you always need a server
 
