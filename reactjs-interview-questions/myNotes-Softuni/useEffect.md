@@ -1,3 +1,10 @@
+Starting with the fact that useEffect is not recommended even by the React team anymore. It renders before fetch so a better alternative for other reasons too is react-query.
+
+see ./public/useEffect-render-problem 
+
+
+
+
 Purpose: useEffect() helps you handle things that are outside the realm of React such as API calls, asynchronous events, and other **side effects**.
 
 ```sh
