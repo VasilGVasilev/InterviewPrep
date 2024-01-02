@@ -12,3 +12,7 @@ Instead of writing CSS, you can use style names directly, but first you obviousl
 ### Leaflet (JavaScript library for mobile-friendly interactive maps)
 
 ### Redux (predictable state container for JavaScript apps)
+
+Its reminds me of useReducer React hook and ContextAPI, but it also has a Redux Browser Devtools Extension which tracks all changes of the state.
+
+[see short intro](https://www.youtube.com/watch?v=_shA5Xwe8_4)
