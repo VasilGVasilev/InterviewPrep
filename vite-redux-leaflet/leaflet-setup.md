@@ -7,7 +7,7 @@ Either, install it using npm
 npm install leaflet and
 import 'leaflet/dist/leaflet.css'; in the file where you use Map from react-leaflet.
 
-OR
+--- OR ---
 
 Include these two lines in the index.html:
 
