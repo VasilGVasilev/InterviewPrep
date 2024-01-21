@@ -9,7 +9,7 @@ app.use(cors())
 app.get("/photos", async (req, res) => {
     const albumId = req.query.albumId
     const { data } = await axios.get(
-        "http://jsonplaceholder.typicode.com/photos",
+        "https://jsonplaceholder.typicode.com/photos",
         { params: {albumId}}
     )
 
