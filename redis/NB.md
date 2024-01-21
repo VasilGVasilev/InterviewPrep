@@ -1,0 +1,1 @@
+Works inside RAM, so volatile, but not good for persistance, thus, main use case is caching.
