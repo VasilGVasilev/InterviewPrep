@@ -15,3 +15,4 @@ console.log("immediate logging");
 // 2) help us await data via their pending state that transforms into fulfilled or rejected state, thus, not crashing our app if data error occurs
 
 // see https://javascript.info/promise-basics
+
