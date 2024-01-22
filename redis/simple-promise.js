@@ -13,3 +13,5 @@ console.log("immediate logging");
 // So what do promises do
 // 1) help us avoid blocking the main thread
 // 2) help us await data via their pending state that transforms into fulfilled or rejected state, thus, not crashing our app if data error occurs
+
+// see https://javascript.info/promise-basics
