@@ -77,3 +77,5 @@ app.get("/photos", async (req, res) => {
 
 app.listen(3000)
 ```
+
+redisClient.get('photos') returns a Promise, which you can now directly resolve with .then() or async/await. It was the case befoer that redisClient.get('photos') was callback-based, so you had to apply a promisifying logic via a library or custom.
