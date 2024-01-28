@@ -20,11 +20,18 @@ export const incrementAsync = createAsyncThunk(
   }
 );
 
+
+// !!!!! Mutbale/Immutable 
+// You can only write "mutating" logic in Redux Toolkit's createSlice and createReducer 
+// because they use Immer inside! If you write mutating logic in reducers without Immer, 
+// it will mutate the state and cause bugs!
+
 export const counterSlice = createSlice({
   name: 'counter',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    // the type of action is created via name key and reducers function name -> counter/increment; the state and action are args and in action is the potential payload
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -38,6 +45,9 @@ export const counterSlice = createSlice({
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
       state.value += action.payload;
+      // alwhough action type is set via the createSlice logic of reducer functions name being used, it is accessible via .type along .payload
+      console.log(action.type);
+      console.log(action.payload)
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -60,6 +70,8 @@ export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectCount = (state) => state.counter.value;
+export const selectState = (state) => state;
+
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

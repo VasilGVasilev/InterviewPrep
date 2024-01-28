@@ -7,11 +7,14 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
+  selectState
 } from './counterSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useSelector(selectCount);
+  const state = useSelector(selectState);
+  console.log(state);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
@@ -45,6 +48,7 @@ export function Counter() {
         />
         <button
           className={styles.button}
+          // mind that the argument in incrementByAmount will be accessible via action.payload
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
