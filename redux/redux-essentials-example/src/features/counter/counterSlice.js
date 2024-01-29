@@ -6,6 +6,7 @@ const initialState = {
   status: 'idle',
 };
 
+// We are not allowed to put in asyn logic within our reducer functions. Thus, thunk.
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
