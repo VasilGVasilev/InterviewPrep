@@ -1,0 +1,2 @@
+In Redux, actions are typically simple objects with a type property that describe the action to be performed. 
+However, when dealing with asynchronous operations like API calls, Redux Thunk allows you to dispatch functions instead of plain objects.

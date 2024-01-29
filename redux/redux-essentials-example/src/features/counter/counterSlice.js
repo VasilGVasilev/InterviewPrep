@@ -6,12 +6,15 @@ const initialState = {
   status: 'idle',
 };
 
-// We are not allowed to put in asyn logic within our reducer functions. Thus, thunk.
+// We are not allowed to put in async logic within our reducer functions. Thus, thunk.
+// Which in turn is possible due to the redux-thunk middleware added to Redux store automatically.
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
+// https://daveceddia.com/what-is-a-thunk/
+
 export const incrementAsync = createAsyncThunk(
   'counter/fetchCount',
   async (amount) => {
