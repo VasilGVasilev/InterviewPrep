@@ -7,7 +7,10 @@ Non-thread-safe: It does not check the safety of the threads which makes it **fa
 
 VScode setup:
 
-instead of using c:\php\php.exe for every command on you VScode powershell apply the following config to File > Preference > Settings
+instead of using c:\php\php.exe for every command on you VScode powershell apply the following config to File > Preference > Settings: php.validate.executablePath: points to the PHP executable on disk. Set this if the PHP executable is not on the system path. BUT this is not necessary since I did put the path to the php executable in the env vars of windows
+
+**To install just download and past php folder in program files and set the path to the php [executable](https://www.geeksforgeeks.org/how-to-install-php-in-windows-10/)**
+**I prefered the xampp option**
 
 Running php files:
 
