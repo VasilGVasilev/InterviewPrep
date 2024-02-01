@@ -1,5 +1,151 @@
+The following is an explanation of how we make the sync javascript async. The short answer is via its environment. Callbacks and promises do not make async logic by themselves. They are instruments that the APIs that come with a javascript enviroment use. Wihtout the Timer API and wrapping our callback in a .setTimeout(), we will not have an async operation. Unlike callbacks that are tools that our tools (APIs) use, promises can be put into our code just by themselves and still follow the line of execution (first call stack is cleared then microtasks are put back into the callstack by the event loop), but this happens due to promise coming with its own constructor.
+
+
 Javascript is a synchronous programming language, but we need to apply async programming when dealing with data, due to the fetching latency of website to server with DB.
 To achieve async programming we make use of callbacks -> promises -> async / await.
+
+The basic thing about Javascript is that it is **synchronous** and this causes blocking if a certain code block requires a lot of time to process:
+```sh
+console.log('first')
+for(let i = 0; i < 100000000; i++){
+  for(let j = 0; j < 100000000; ij++){
+    console.log(j)
+  }
+}
+console.log('last')
+
+```
+
+Last will be logged out after the nested for loops finish executing if they don't crash the app.
+
+A real life scenario for such blocking is some data to be fetched and implemented in a website. If we have to wait for the line of code to execute that has the necessary data used to populate the website, we will have bad user experience. Instead we should show the whole website even if parts are missing, thus, execution should not be blocked, and then the website be hydrated with the awaited data.
+
+But how does this happen since Javascript is synchronous. It only has one thread to execute all processes.
+
+We need an environment to run javascript in. A browser or node js -> runtime environments.
+
+Node.js has the main thread, but also 'places' where we can execute async logic. We can 'put' our logic that would otherwise block the main thread and thus, aschieve non-blocking behaviour.  
+
+But what are those places? Most articles re-iterate callbacks, promises, async/await logic without actually explaining.
+
+Callbacks in themselves are function that are used as arguments of other functions, so the following code:
+```sh
+function fetchData(callback) {
+  callback(); 
+}
+
+function processData() {
+  console.log('Callback says hello');
+}
+
+callback('first')
+fetchData(processData);
+callback('last')
+```
+
+Uses callbacks, but that does not inherenlty mean we are going to have async logic in it. 
+The line of execution will be :
+first
+callback says hello
+last
+
+This is due to javascript being synchronous and callbacks having no inherent ability to make something async.
+When people use callbacks in their articles as a 'way to handle async logic', it is misleading. Async logic requires first and foremost a javascript runtime environment. We need a main thread, an event queue, a callstack queue, a microtask a macrotask queue, a web api and more. 
+
+The right approach is - what operation do we want to make async. For example, our nested loop:
+```sh
+console.log('first')
+for(let i = 0; i < 100000000; i++){
+  for(let j = 0; j < 100000000; ij++){
+    console.log(j)
+  }
+}
+console.log('last')
+```
+
+We cannot just make some callback function that executes this nested for loop be put in some other function and say - we made it async. 
+
+**Async functionality comes with the runtime and the provided APIs.**
+
+```sh
+console.log('first')
+setTimeout(function () {
+  for(let i = 0; i < 100000000; i++){
+    for(let j = 0; j < 100000000; ij++){
+      console.log(j)
+    }
+  }
+}, 1000);
+
+console.log('last')
+```
+
+The line of execution of the above code will be:
+first
+last
+0
+1
+2
+....
+
+The reason for that is that we have used setTimeout which is one of the ways to make certain logic async. In it we pass on a callback function (containing our nested for loops). In this sense, yes, callbacks are a way to make async operations, but it is merely the instrument that our actual instrument uses.
+
+Promises are different:
+
+```sh
+const promise = new Promise(resolve => {
+    resolve("Promise says hello")
+})
+function fetchData(callback) {
+    callback();
+}
+
+function processData() {
+    console.log('Callback says hello');
+}
+
+promise.then(res => console.log(res))
+console.log('first');
+fetchData(processData);
+console.log('last');
+```
+
+the line of execution will be:
+
+first
+Callback says hello
+last 
+Promise says hello
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLD IDEAS:
 
 
 **Callbacks**
@@ -18,6 +164,8 @@ function processData(data) {
 
 fetchData(processData); // Pass the processData function as a callback
 console.log('Fetching data...');
+
+
 ```
 
 Line of execution:
@@ -43,11 +191,12 @@ So the "Fetching data..." console.log executes before the fetchData function.
 How is this possible? How does Javascript know to continue interpreting the code and arrive at the console.log, even though it has another task seemingly on standby with fetchData function.
 My problem came from the emphasis in numerous text that Javascript is single-threaded. It seemed to me that this is countra-intuitive. How can it be single-threaded and still have several simultaneous processes running in the form of callbacks (or promises) and still continue with the execution of the code. Well, to understand Javascript, one must deep dive into its actual process of work. Javascript can only run on a Javascript runtime. That runtime could be a browser or Node.js, but this runtime equips pure Javascript code with a few more functionalities rather than just a basic line by line interpreter of code.
 
-The Javascript runtime consists of the JS engine and, mind the following to be crucial -> event loop, Web API and Callback Queue.
+The Javascript runtime consists of the JS engine and, mind the following to be crucial -> event loop and Web API (enabling async logic).
 
 When we say single threaded we refer to the execution mechanism of the JS engine. The Javascript engine is responsible for the  memory heap and the call stack. The memory heap stores all the variables defined in our JS code while the call stack performs the operations (function execution) (side note is that the engine manages the execution context on the basis of call stack and memory heap). 
 
-So, back to the current problem, single threaded means only one call stack. One call stack, in turn, means only one piece of code can be executed at a time. In our case with console.log('Fetching data...') and fetchData function, given the nature of Javascript to be non-blocking, Javascript does not wait for the response of the callback, but moves on with the interpretation of the subsequent blocks of code.
+So, back to the current problem, single threaded means only one call stack. One call stack, in turn, means only one piece of code can be executed at a time. 
+In our case with console.log('Fetching data...') and fetchData function, given the nature of Javascript to be non-blocking, Javascript does not wait for the response of the callback, but moves on with the interpretation of the subsequent blocks of code.
 Finally, the answer -> the callback is 'extracted' from the JS engine flow of execution onto a separate thread. Thus, concurrency becomes possible. 
 But where is this callback 'extracted'?
 The general answer is that any such asynchronious function utilizes the Web API by relying on the event loop to manage its queue priority to re-enter the Javascript engine event cycle.
