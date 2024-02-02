@@ -1,3 +1,4 @@
+```sh
 // Abstract class representing a shape
 class Shape {
     calculateArea() {
@@ -30,6 +31,11 @@ class Circle extends Shape {
     }
 }
 
+
+
+
+//the following is a function to combine the results of the two shapes
+
 // Function to calculate the total area of an array of shapes
 function calculateTotalArea(shapes) {
     let totalArea = 0;
@@ -50,3 +56,7 @@ const shapes = [
 
 const totalArea = calculateTotalArea(shapes);
 console.log(`Total Area: ${totalArea}`);
+
+```
+
+Open for extension closed for modification, as it is with calculateArea() of superclass shape being open for extension, and then each subclass Rectanlge and Circle extends for its specific needs without modifying. Basically, again as with dependency inversions, it is good to have abstraction superclass and go from there to overwrite speficis in each subclass.
