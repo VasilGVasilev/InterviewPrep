@@ -5,15 +5,11 @@ function useMemo(cb, depNum) {
     let cachedResult = null;
     let cachedDepNum = null;
     return () => {
-        if (cachedDepNum != depNum) {
-            if (cachedResult != cb) {
+        if (cachedDepNum != depNum && cachedResult != cb) {
                 cachedResult = cb;
                 cachedDepNum = depNum;
-                return cachedResult
-            }
-        } else if (cachedDepNum == depNum) {
-            return cachedResult
         }
+        return cachedResult
     }
 
 }
