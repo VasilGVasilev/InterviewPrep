@@ -51,6 +51,12 @@ The first argument expected by the useEffect Hook, is a callback function where 
 be executed. 
 The second is an array [] called a dependency array. 
 
+<!-- WHEN NOT TO USE USEFFECT -->
+**However, useEffect comes into handy for intial data fetch, you do not actually need it for per click fetch. That would be a user action, not an effect. An effect would be some action that you as creator want to execute on the program which is outisde the realm of react -> API call, subscription, etc**
+
+
+
+
 - If the array is omitted, the callback function will run every time the code changes. ---> infinite fetch render loop 
 - If the array is empty, the callback function will run once. /Initialization empty/ ---> like  componentDidMount()
 - If there is a value provided, the callback function will run each time the value changes. ---> like componentDidUpdate()
