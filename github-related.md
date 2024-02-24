@@ -1,0 +1,1 @@
+I can get the green checks for each day only if I commit from my git local accounf vaskomeil@gmail.com, I can commit from my work account to the github profile, too. But only through the synchronised accound Github and git local, I will get the checks.

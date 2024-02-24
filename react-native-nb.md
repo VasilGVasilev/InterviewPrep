@@ -1,1 +1,0 @@
-Have to create a react native app
