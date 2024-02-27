@@ -10,3 +10,5 @@ Most Git commands accept a --local flag to specify that the configuration should
 git config --local user.name "Your Name"
 git config --local user.email "your_email@example.com"
 ```
+
+testing change of local git config
