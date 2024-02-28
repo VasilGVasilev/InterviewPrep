@@ -44,7 +44,7 @@ export default store;
 ```
 
 
-The Redux Toolkit way is much less verbose, there is no need to separate actions and reducers, making a seprate file for each reducer and each action with the vars to be used in the reducer and the functions to be dispatched and in turn trigger the reaction of the reducer: 
+The Redux Toolkit way is much less verbose, there is no need to separate actions and reducers, making a seprate file for each reducer and each action with the vars to be used in the reducer and the functions to be dispatched and in turn trigger the reaction of the reducer *having slices also orientates the process better towards modularity of databases (each slice represents a db)*: 
 
 ```sh
 // slice.js
