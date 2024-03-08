@@ -37,3 +37,5 @@ new Promise((resolve) => {
     })
 });
 ```
+
+In a Promise, the executor function (the function you pass to new Promise()) is executed immediately. However, the Promise itself is not considered "resolved" until the resolve() function is called. BUT there can be executor functions in a promise.
