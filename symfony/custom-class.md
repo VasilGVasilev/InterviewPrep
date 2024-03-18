@@ -26,3 +26,24 @@ div:has(input:checked) {
   background-color: #f0f0f0;
 }
 ```
+
+old browsers solution:
+
+```sh
+input {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    word-break: break-all;
+}
+input:checked + label {
+    background: linear-gradient(to top, $primary, $primary-light);
+}
+```
+We connect the label and the input with for in the html so that clicking on the label will be equivalent to input click. The input being checked then is used in the css above to change the label background and if there is a parent to the input and label, adjust the label to cover the parent fully.
