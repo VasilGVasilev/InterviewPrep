@@ -1,0 +1,1 @@
+Single responsibility - try not to delve too deep into details, making a class for each separate service, but focus on creating classes with common purpose services.
