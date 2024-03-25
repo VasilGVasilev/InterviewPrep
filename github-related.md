@@ -12,3 +12,20 @@ git config --local user.email "your_email@example.com"
 ```
 
 testing change of local git config
+
+
+Merge locally
+
+mind the difference, merging locally is all about incorporating changes from one branch (like branch A) into another (like main) without harming either branch. Actually, merge on the remotely hosted repo does not destroy branches either, but here, I focus explaining local merge (before which you must pull and after which you myst push).
+
+Here's a breakdown of the steps to merge branch A into main using Github Desktop:
+
+1. Switch to main branch: In Github Desktop, click on the current branch name (which should be different from branch A).
+
+2. Select "Choose a branch to merge into" from the dropdown menu.
+
+3. Choose branch A: In the window that appears, select branch A from the list of available branches.
+Merge branch A: Click the button that says "Merge branch A into main" (or whatever your main branch is called).
+
+
+In summary: I am on the branch that needs to be updated and choosing a branch to merge into means select branch that is ahead of current to apply those ahead changes into current.
