@@ -1,3 +1,13 @@
+Summary:
+Event propagation describes the stack of events that are fired in the web browser. Meaning, when we click a button, the intial phase (capture phase) captures the specific element button top to bottom (from window, down to document, to html, to btn). The actual 'capturing' is called target phase. 
+Each handler can access event object properties:
+- event.target – the deepest element that originated the event.
+- event.currentTarget (=this) – the current element that handles the event (the one that has the handler on it). 
+The subsequent bubbling up the chain of nodes is called bubbling phase. We use this bubbling phase (which is the defualt for eventListeners) to achieve event delegation, namely, using the parent of common elements to attach an eventListener, making the DOM manipulation process more efficient.
+
+[see](https://javascript.info/bubbling-and-capturing)
+
+
 Since events are a fundamental part of any web application, we need a way to manage those events and interconnect them to form a whole web page. The structure of any web page is represented by the DOM tree, so this is also the chain that serves as a link between nodes/elements which can fire events. Looking at the DOM tree and knowing that Javascript initial purpose was to be scripting language for static web sites, we can infer why is Javascript's inheritance based on the protoype model. It two interconnects via a chain of objects that each have a prototype which in turn is also an obejct. A DOM tree is similar with its elements that consists of properties and methods, but also of links to parent and children elements. But to go back to the subject matter of the current article, the two event propagation models through which we manage and control the flow of events in the Document Object Model (DOM) are event bubbling and event capture. 
 
 **So, what happens when we click on a button on a web page?**
