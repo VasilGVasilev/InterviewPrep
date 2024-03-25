@@ -14,7 +14,7 @@ git config --local user.email "your_email@example.com"
 testing change of local git config
 
 
-Merge locally
+Merge locally - merge into means be on branch to be updated and merge branch ahead into branch to be updated
 
 mind the difference, merging locally is all about incorporating changes from one branch (like branch A) into another (like main) without harming either branch. Actually, merge on the remotely hosted repo does not destroy branches either, but here, I focus explaining local merge (before which you must pull and after which you myst push).
 
