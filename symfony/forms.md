@@ -3,7 +3,41 @@ You basically start with a php class with getters and setters.
 You import it in the special Form builder which relies on specific for opinionated symfony form types, a ready to use radio, checkboxes, and other form fields.
 You can create the forms out of classes in controllers, but it is advised to create them in a separate classes.
 
-1) create special form class
+In summary: create a class, create a class type, combine them in the controller
+
+1) create special form class and form type
+
+```sh
+// src/Entity/Task.php
+namespace App\Entity;
+
+class Task
+{
+    protected string $task;
+
+    protected ?\DateTimeInterface $dueDate;
+
+    public function getTask(): string
+    {
+        return $this->task;
+    }
+
+    public function setTask(string $task): void
+    {
+        $this->task = $task;
+    }
+
+    public function getDueDate(): ?\DateTimeInterface
+    {
+        return $this->dueDate;
+    }
+
+    public function setDueDate(?\DateTimeInterface $dueDate): void
+    {
+        $this->dueDate = $dueDate;
+    }
+}
+```
 
 ```sh
 // src/Form/Type/TaskType.php
@@ -29,7 +63,7 @@ class TaskType extends AbstractType //better extend AbstractType
 }
 ```
 
-2) import the special form class into the controller:
+2) import the special form class and form type into the controller via createForm helper:
 
 ```sh
 // src/Controller/TaskController.php
@@ -94,6 +128,12 @@ class TaskController extends AbstractController
     }
 }
 ```
+
+NB:
+mind that when creating a from via createForm helper, you can pass in null instead of a special class entity and the form will still work. In such a case, you have to manually take care of subsequent submitting of data. If you had a class, it will be an object, if you rely on extracting form data via
+ - $someDataObject->setDataFromForm($form->getData());
+it will be an associative array.
+Main difference between objects and associative arrays is that the former can have behaviour(methods)
 
 
 **Additionals**
