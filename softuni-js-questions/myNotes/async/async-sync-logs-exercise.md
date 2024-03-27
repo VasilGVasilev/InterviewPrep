@@ -39,3 +39,27 @@ new Promise((resolve) => {
 ```
 
 In a Promise, the executor function (the function you pass to new Promise()) is executed immediately. However, the Promise itself is not considered "resolved" until the resolve() function is called. BUT there can be executor functions in a promise.
+
+
+Mind that you can also have .then() chaining to execute some logic, just without actually passing any argument '_':
+
+```sh
+const toBeResovled = new Promise((resolve) => {
+    window.addEventListener('test', () => {
+        resolve(5)
+    })
+});
+
+toBeResolved
+    .then(r=>r.json())
+    .then(r=>{
+        if (r.data === 0){
+            # todo
+        }
+    })
+    .then(_ => {
+        if (currentVariable) {
+            console.log(5);
+        }
+    });
+```
