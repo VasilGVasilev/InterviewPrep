@@ -2,4 +2,76 @@
 
 ![promise](https://github.com/VasilGVasilev/InterviewPrep/blob/main/softuni-js-questions/myNotes/async/promise-object.png)
 
-The crucial part of understanding the how .then() and .catch() work with promises is reviewing the [[PromiseFulfillReactions]] and [[PromiseRejectReactions]]
+The crucial part of understanding the how .then() and .catch() work with promises is reviewing the [[PromiseFulfillReactions]] and [[PromiseRejectReactions]]. 
+
+For example the [[PromiseFulfillReactions]] has among others a PromiseReaction field with [[Handelers]], meaning what we put in the .then(). This field gets triggered when the promise is fulfilled. When does the promise get fulfilled -> when the acync operation that was in the task Queue gets pack in the call stack and is executed, as per the below example -> ()=>resolve('Done!').
+
+So basically, we have an async operation, ex. setTimeout, it has the resolve of the Promise. When the async operation get back into the call stack and gets executed, the resolve of the promise gets executed, the Promise becomes fulfilled, it triggers the PromiseFullfillReaction Handler (which is the code inside .then()) and the string we pass in the resolve of the Promise (here, it is 'Done!') gets applied as an argument to the handler (here, result => console.log(result) ).
+This is set onto the microTask Queue until the call stack is free and when it is free, it finally gets the actual agrument 'Done!' applied and gets executed.
+
+```sh
+new Promise((resolve) => {
+    setTimeout(()=>resolve('Done!'), 100);
+})
+    .then(result => console.log(result))
+```
+
+
+# Full cycle:
+
+
+## FE:
+```sh
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch Example</title>
+</head>
+<body>
+    <button id="get-data">Get Data</button>
+    <div id="data-container"></div>
+
+    <script>
+        const getDataButton = document.getElementById('get-data');
+        const dataContainer = document.getElementById('data-container');
+
+        getDataButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/data');
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+                const data = await response.json();
+                dataContainer.textContent = data.message;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                dataContainer.textContent = "Failed to get data.";
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+## BE:
+
+```sh
+const express = require('express');
+
+const app = express();
+const port = 3000;
+
+app.get('/api/data', (req, res) => {
+  const data = {
+    message: 'Hello from the backend!',
+  };
+  res.json(data);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+```
+
+It may be self-evident, but I wanted to make it clear to myself that Promise is a FE concept. On the back end, we just sent a formatted (json is popular) data. On the front end, we use a promise, which here is an optimised version (fetchAPI) to resolve this data by not blocking the other processes. 
