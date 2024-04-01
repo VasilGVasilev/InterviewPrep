@@ -4,6 +4,8 @@ Redux expects actions to be plain objects, and reducers to be pure functions. As
 
 *What if we do not differentiate a sync from an async action:*
 
+**Redux actions are dispatched synchronously by default, which means they immediately update the state. However, many real-world applications involve asynchronous operations, such as fetching data from an API, reading from a database, or performing computations that take a significant amount of time.**
+
 If you try to handle an asynchronous operation in a synchronous action, you'll run into issues because of the way JavaScript handles asynchronous operations.
 
 Let's consider an example where you're trying to fetch data from an API. If you try to dispatch a synchronous action with the result of the fetch operation, like this:
