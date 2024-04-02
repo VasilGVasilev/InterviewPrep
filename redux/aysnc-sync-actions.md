@@ -4,7 +4,34 @@ Redux expects actions to be plain objects, and reducers to be pure functions. As
 
 *What if we do not differentiate a sync from an async action:*
 
-**Redux actions are dispatched synchronously by default, which means they immediately update the state. However, many real-world applications involve asynchronous operations, such as fetching data from an API, reading from a database, or performing computations that take a significant amount of time.**
+**Redux actions are dispatched synchronously by default, which means they immediately update the state. However, many real-world applications involve asynchronous operations, such as fetching data from an API, reading from a database, or performing computations that take a significant amount of time. That is why we need thunks, functions that return functions so that we can apply async logic to Redux actions, too.**
+
+Thus, the strcuture -> 
+
+```sh
+const someActionAsync = () => (dispatch, getState) => {
+  return Promise.resolve()
+    .then(()=>dispatch(someOtherActionAsync()))
+    .then(()=>dispatch(someThirdActionAsync()))
+    .catch(...)
+}
+```
+
+OR
+
+```sh
+const someActionAsync = () => async (dispatch, getState) => {
+  try {
+
+    await dispatch(someOtherActionAsync());
+    await dispatch(someThirdActionAsync());
+    dispatch(someActionNotAsync());
+  } catch (error) {
+    ...
+  }
+}
+```
+
 
 If you try to handle an asynchronous operation in a synchronous action, you'll run into issues because of the way JavaScript handles asynchronous operations.
 
