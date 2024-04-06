@@ -1,0 +1,3 @@
+I came accross a problem in my tilia project, when I render all apartments via the filter and then render only one type of apartment, the apartments that were part of the all, did not change. The problem was that React renders only the changed items to be optimal efficient. Key={index} does not guarantee uniqueness. Better, set the whole table whose elements change to have a changing key, too.
+
+[see](https://github.com/VasilGVasilev/tilia/commit/4d0db5ad443576a7d46d1f723b127dc65a420903)
