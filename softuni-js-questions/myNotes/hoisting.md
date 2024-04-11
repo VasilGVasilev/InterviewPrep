@@ -1,3 +1,22 @@
+Clear out semantics:
+
+- Function definition refers to the body of a function
+```javascript
+{
+
+}
+```
+
+- Function declaration /name is declared/:
+```javascript
+function greet(){}
+```
+
+- Function expression /name is omitted/:
+```javascript
+const greet = function(){}
+```
+
 Hoisting is not a universally agreed upon term but it is refering to JavaScript's default behavior of moving all declarations to the top of the current scope.
 
 Variables:
