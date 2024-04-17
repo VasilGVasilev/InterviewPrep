@@ -1,4 +1,4 @@
-You use self:: to access the class static or const methods and $this to acces the object methods:
+You use self:: to access the class static or const methods and $this to access the object methods:
 
 ```sh
 <?php

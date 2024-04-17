@@ -1,0 +1,1 @@
+dd() as console.log() in js, shows on browsers directly
