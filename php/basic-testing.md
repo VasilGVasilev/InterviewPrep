@@ -23,7 +23,7 @@ class EventControllerTest extends TestCase
 {
     public function testSave()
     {
-        // Your test code goes here
+        // Your test code goes here and it tests whether the EventController method save returns a valid Response, see Integration for difference
     }
 }
 ```
@@ -80,7 +80,7 @@ class EventControllerIntegrationTest extends WebTestCase
 {
     public function testSave()
     {
-        // Your test code goes here
+        // Your test code goes here, and unlike the Unit test version, we check the whole communication by simulating the browser
     }
 }
 ```
@@ -111,5 +111,5 @@ This test checks that making a GET request to '/your-route-here' returns a 200 s
 
 This will run your `EventControllerIntegrationTest` and output the results in the terminal.
 
-Summary: Integration tests aim at grasping broader part of the app, usually, the services. To achieve 
-@TODO: finish explanation of difference unit vs integ
+Summary: Integration tests aim at grasping broader part of the app, usually, how different pieces of the system work together, for example, testing interations between databases, APIs and other external systems. Thus, control to the mock browser via static::createClient() is crucial.
+Basically, the difference between unit and integration tests is that unit tests focus on the isolation aspect of testing a single unit, nothing stops you from testing a bigger part of the app via unti tests, but unit tests use mocks and it defeats their purpose, it is better to simulate the whole environment via browser, namely, evolving to integration tests. 
