@@ -1,0 +1,2 @@
+Best way to apply css is via Encore, add app.js with Encore which in turn imports the app.css. Also, necessary to add a 'block stylesheets' into the very twig you want the css, it is like adding a <link>
+[see](https://symfony.com/doc/current/frontend/encore/simple-example.html)
