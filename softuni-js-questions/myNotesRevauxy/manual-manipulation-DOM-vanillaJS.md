@@ -22,3 +22,9 @@ class MyComponent {
     }
 }
 ```
+
+### Selecting a DOM element:
+
+When you select a DOM element using `querySelector` and assign it to a variable (in this case, `this.#countdown`), **you're not just storing the current state of that element. You're actually storing a reference to the DOM element itself.**
+
+This means that when you modify properties of `this.#countdown`, such as `textContent`, you're directly modifying the corresponding DOM element in the webpage. 
