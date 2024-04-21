@@ -1,6 +1,12 @@
 ## Class JS
 
-How do we create a class component? - Depends on what we need.
+### Object vs Class
+/Objects have properties (key:value pairs), classes have fields and methods/
+
+-   fields and methods
+    notice that the field can store values, it is like a variable but since it is in a class, it does not requirer let or const, it is a property.
+
+### How do we create a class component? - Depends on what we need.
 
 We can create a class like this:
 
@@ -14,12 +20,25 @@ class SomeClass {
 }
 ```
 
-/Objects have properties (key:value pairs), classes have fields and methods/
+Notice how we did not use the constructor function, since it is no longer necessary, per se. If we want, it is all the same:
 
--   fields and methods
-    notice that the field can store values, it is like a variable but since it is in a class, it does not requirer let or const, it is a property.
+- Public field:
 
-Notice how we did not use the constructor function, since it is no longer necessary, per se. However, if we want to initialize a private field(1) or need inherit(2), we must use the constructor function:
+```js
+class SomeClass {
+    someField;
+
+    constructor (someField){
+        this.someField = 42;
+    }
+
+    printField() {
+        console.log(this.someField);
+    }
+}
+```
+
+- Private field:
 
 ```js
 class SomeClass extends BaseClass {
@@ -35,6 +54,13 @@ class SomeClass extends BaseClass {
     }
 }
 ```
+
+The main utility of a constructor is to implement props and add eventListeners, not that you cannot outside of it, but the constructor gets initialized first and evetnListeners are better to be init first, too.
+
+
+
+
+
 
 ## Class React
 
