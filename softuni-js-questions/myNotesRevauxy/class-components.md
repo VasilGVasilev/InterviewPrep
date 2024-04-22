@@ -1,7 +1,8 @@
 ## Class JS
 
 ### Object vs Class
-/Objects have properties (key:value pairs), classes have fields and methods/
+Objects have properties (key:value pairs)
+Classes have fields and methods
 
 -   fields and methods
     notice that the field can store values, it is like a variable but since it is in a class, it does not requirer let or const, it is a property.
