@@ -1,0 +1,1 @@
+Curl is not another package manager as homebrew or npm. It makes networks requests directly and as for the packages that utilize it, it is best to add '| bash' which tells the mac to execute the downloaded scripts immediately.
