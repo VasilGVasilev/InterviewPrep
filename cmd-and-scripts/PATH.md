@@ -1,3 +1,5 @@
+Why we need Paths? -> mainly for accessibility in CLIs.
+
 You can view your system's PATH by using the `echo` command in the terminal. The PATH is stored in an environment variable, also called `PATH`. Here's the command:
 
 ```bash
