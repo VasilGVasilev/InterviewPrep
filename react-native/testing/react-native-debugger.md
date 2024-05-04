@@ -1,0 +1,1 @@
+Need to connect the debugger to the react native app
