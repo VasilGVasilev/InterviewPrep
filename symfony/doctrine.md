@@ -69,9 +69,9 @@ class ProductRepository extends ServiceEntityRepository
     {
         $product = new Product();
         $product->setName($productName);
-
-        $product->persist($product);
-        $product->flush();
+        // em EntityManager
+        $this->_em->persist($product);
+        $this->_em->flush();
     }
 }
 ?>

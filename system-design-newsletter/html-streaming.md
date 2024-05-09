@@ -1,0 +1,1 @@
+Airbnb had the revolutionizing idea to stream instead of buffer html so that you don't get a waterfall and bottleneck of requests.
