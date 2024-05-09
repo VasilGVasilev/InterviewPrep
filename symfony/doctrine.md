@@ -58,7 +58,7 @@ If we want to populate those tables with some objects, we ought to use the **->p
     }
 ```
 
-Another way not so popular, tho, is via Repository:
+Another way is via Repository:
 - use a Doctrine repository. A repository is like a PHP class where you can add custom functions for things like querying for data. You could add a function to a repository that persists an object to the database.
 
 ```php
@@ -70,8 +70,8 @@ class ProductRepository extends ServiceEntityRepository
         $product = new Product();
         $product->setName($productName);
 
-        $this->_em->persist($product);
-        $this->_em->flush();
+        $product->persist($product);
+        $product->flush();
     }
 }
 ?>
