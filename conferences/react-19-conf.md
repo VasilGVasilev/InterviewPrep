@@ -122,3 +122,23 @@ export function MusicPlayer({ allSongs }){
 
 its an oversimplification to say that *Remix is just React Router with plugin* since it has  code splitting and optimised transitions
 
+### SSR vs CSR
+
+![SSRvsCSR](https://github.com/VasilGVasilev/InterviewPrep/blob/main/reactjs-interview-questions/images/SSR%20vs%20CSR.png)
+
+- CSR
+
+Server side REACT TREE gets rendered to a *js/css bundle + minimal html* which shipped (via JSON) to the client where the client side renderer uses the *js/css bundle + minimal html* to rebuild the REACT TREE
+
+- SSR
+
+Server side REACT TREE gets rendered to a *js/css bundle + complete html* which shipped (via JSON) to the client where the client side renderer uses the *js/css bundle + complete html* to rebuild the REACT TREE
+
+**BOTH approaches rely that the react renderer will rebuild the REACT TREE client side be that with minimal or complete html.**
+
+Concurrent React since React 18v makes it possible for a change in that model - react server components which allows react to utilize streaming. It sends the actual serialized (special JSON-like format) REACT TREE and the client side renderer understands this format so that it build the REACT TREE direclty withnout needing the js/css bundles + html.
+
+**NB** RSC are never sent to the client, only their return value in the special JSON like serialized format => we can use server side functionality directly within the components (access DB, file system). in react 19, we can use async/await to render server components(mind that next.js had its own feature with similar functionality)
+
+![RSC](https://github.com/VasilGVasilev/InterviewPrep/blob/main/reactjs-interview-questions/images/RSC.png)
+
