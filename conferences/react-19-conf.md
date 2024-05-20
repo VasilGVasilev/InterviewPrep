@@ -116,3 +116,9 @@ export function MusicPlayer({ allSongs }){
     )
 }
 ```
+
+
+### Remix will be React Router v7
+
+its an oversimplification to say that *Remix is just React Router with plugin* since it has  code splitting and optimised transitions
+
