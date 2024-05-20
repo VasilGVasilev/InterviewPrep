@@ -149,5 +149,12 @@ Concurrent React since React 18v makes it possible for a change in that model - 
 
 - RSC in action (if you want client side functionality enable it within a wrapped client component that is designated by the 'use client' directive)
 
-![RSC-](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-use-client.png)
+![RSC-use-client](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-use-client.png)
 
+- how to pass fetched data from server component to client component
+you can either fetch the data (async/await) in the wrapper server component and pass it as a prop to the client component or utilize the use API in its promise resolving branch, meaning you direclty fetch(no async/await) and pass on the promise which use API will resolve on the client side.
+
+### RSC - improving readability
+
+
+![RSC-better](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-better.png)
