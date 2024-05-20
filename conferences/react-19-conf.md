@@ -140,14 +140,14 @@ Concurrent React since React 18v makes it possible for a change in that model - 
 
 **NB** RSC are never sent to the client, only their return value in the special JSON like serialized format => we can use server side functionality directly within the components (access DB, file system). in react 19, we can use async/await to render server components(mind that next.js had its own feature with similar functionality)
 
-![RSC](https://github.com/VasilGVasilev/InterviewPrep/blob/main/reactjs-interview-questions/images/RSC.png)
+![RSC](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC.png)
 
 - RSC in action (with suspense to avoid lack blank page until full page is loaded)
 
-![RSC-async/await](https://github.com/VasilGVasilev/InterviewPrep/blob/main/reactjs-interview-questions/images/RSC-async%3Aawait.png)
+![RSC-async/await](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-async%3Aawait.png)
 
 
 - RSC in action (if you want client side functionality enable it within a wrapped client component that is designated by the 'use client' directive)
 
-![RSC-](https://github.com/VasilGVasilev/InterviewPrep/blob/main/reactjs-interview-questions/images/RSC-use-client.png)
+![RSC-](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-use-client.png)
 
