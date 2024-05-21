@@ -158,3 +158,8 @@ you can either fetch the data (async/await) in the wrapper server component and 
 
 
 ![RSC-better](https://github.com/VasilGVasilev/InterviewPrep/blob/main/conferences/images/RSC-better.png)
+
+### METADATA hoisting 
+metadata can be set in a particular component, but React will hoist it so that the metadata is loaded before all components
+
+### Actions become more and more relevant for from submission
