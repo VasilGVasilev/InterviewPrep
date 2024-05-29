@@ -1,0 +1,1 @@
+You can make a template default app and substitute from app.json the appTheme you want specifically
