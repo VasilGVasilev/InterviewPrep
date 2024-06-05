@@ -1,0 +1,1 @@
+In React Native, styles are not cascaded like they are in CSS. This means that child components do not inherit styles from their parent components. Therefore, you cannot nest styles in the same way you would in CSS.
