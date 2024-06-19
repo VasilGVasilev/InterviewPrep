@@ -1,4 +1,4 @@
-To create a standalone APK for distribution without the need to upload to Google Play Store, you can follow these steps:
+### To create a standalone APK for distribution without the need to upload to Google Play Store, you can follow these steps:
 
 1. Generate a keystore file if you don't have one. This is used to sign your app. Open a terminal and run:
 
