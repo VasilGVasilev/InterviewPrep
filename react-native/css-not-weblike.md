@@ -25,3 +25,15 @@ It is more appropriate to use Dimensions of each device to ascertain percentage 
 import {Dimensions} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 ```
+
+
+### Stacking
+You can stack StyleSheets and the last will override the prior as in this case the last's existance depends on a Boolean
+
+```js
+    style={StyleSheet.flatten([
+        styles.formContainer,
+        (BooleanValue) &&
+            styles.formContainerSkinName
+    ])}>
+```
