@@ -37,3 +37,12 @@ You can stack StyleSheets and the last will override the prior as in this case t
             styles.formContainerSkinName
     ])}>
 ```
+
+### Stylesheet.create not necessary
+Although semantically and bugcatchingwise in React Native it is more appropriate, you may put in a regular object in the style tag
+
+```js
+    style={
+        styles.formContainer
+    }>
+```
