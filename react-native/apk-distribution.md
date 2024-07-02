@@ -3,8 +3,6 @@
 1. Generate a keystore file if you don't have one. This is used to sign your app. Open a terminal and run:
 
 ```bash
-
-
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
 
