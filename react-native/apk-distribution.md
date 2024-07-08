@@ -19,7 +19,9 @@ MYAPP_UPLOAD_STORE_PASSWORD=YOUR_STORE_PASSWORD
 MYAPP_UPLOAD_KEY_PASSWORD=YOUR_KEY_PASSWORD
 ```
 
-Replace `my-key-alias`, `YOUR_STORE_PASSWORD`, and `YOUR_KEY_PASSWORD` with the values you used in step 1.
+Replace `YOUR_STORE_PASSWORD`, and `YOUR_KEY_PASSWORD` with the values you used in step 1.
+
+NB> Original tip said to include my-key-alias, but it does not work, so I removed it and only change the above two.
 
 4. Edit the android/app/build.gradle file in your project and add the signing config inside the android block:
 
