@@ -1,0 +1,1 @@
+Running on native php of a mac can be slow with mPDF, so using Apache2 is preferable for load of external resources, you can comment those out or run Apache2 ( but it needs configuration to the workspace you want to run )
