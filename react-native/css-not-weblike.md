@@ -46,3 +46,11 @@ Although semantically and bugcatchingwise in React Native it is more appropriate
         styles.formContainer
     }>
 ```
+
+### scrollTo is not like web scroollIntoView
+
+```js
+    const handleInputFocus = () => {
+        scrollViewRef.current.scrollToEnd({ animated: true });
+    };
+```
