@@ -24,6 +24,31 @@ Here's a breakdown of how it works:
 
     Because props are accessed by name, their order in the JSX tag does not matter. You could swap `propA` and `propB` around, and it would not affect how they are accessed within the component.
 
+2.1 **What if I omit to pass a value to a Component that has a prop**
+
+  **Native Component** like TextInput, if there is no conditional or default label value and label is a native TextInput tag, the label will be of value undefined:
+  ```js
+  function MyTextInput({ label, ...props }) {
+    return (
+      <View>
+        {label && <Text>{label}</Text>}
+        <TextInput {...props} />
+      </View>
+    );
+  }
+  ```
+  **Custom components** have the same logic:
+  ```js
+  <MyComponent />
+
+
+  function MyComponent(props) {
+    console.log(props.myProp); // This will log `undefined` if `myProp` is omitted.
+    return <div>{props.myProp ? 'myProp is true' : 'myProp is false'}</div>;
+  }
+  ```
+
+
 3. **Named Parameters**: This behavior is akin to named parameters in some programming languages, where parameters of a function are identified by names rather than their position in the parameter list.
 
 In summary, in React JSX, the precedence of prop names over their order allows for more readable and maintainable code, as you don't need to remember the order of parameters like you do with positional arguments in functions. This design also makes it easy to omit props or provide them with default values within the component.
