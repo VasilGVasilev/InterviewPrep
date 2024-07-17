@@ -1,0 +1,1 @@
+In React, to **keep values without causing a re-render**, you can use the **useRef** hook. Unlike useState, updating a ref does not trigger a component re-render. The useRef hook is commonly used for accessing DOM elements directly, but it can also hold any mutable value.
