@@ -1,0 +1,2 @@
+### REACT, not plain js class - no need to use constructor for props
+React's class components automatically have props available as this.props, thanks to React.Component which GridGallery extends. There's no need to pass props to the constructor and assign them to this.props unless you need to access them in the constructor for initial state setup or other initialization logic.
