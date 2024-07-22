@@ -65,3 +65,32 @@ The correct way to handle this is to use asynchronous actions, often represented
 
 In the same sense, the code connect the components with redux via .connect() while the modern way is dispatch and selector hooks. To get the full picture
 - you either have a hooks distribution or you need to make thunks yourself, manage them via a custom thunk and then use .connect() in the actual component to attach them to the store, not mentioning you have to import them, but this import is for the mapDispatchToProps and connect().
+
+### Thunks
+
+So what are thunks? (in general programming - functions with logic that can be called later)
+
+In Redux, thunks is a pattern of writing functions with logic inside that can interact with a Redux store's **dispatch and getState** methods.
+
+Due to their nature of being higher order functions redux thunks are perfect for handling async operations (but can do sync one too although it defeats their purpose of delayed effect, you can use regular action creators):
+
+```js
+// SYNC ACTION CREATOR 
+export const setUserData = userData => ({
+    type: 'SET_USER_DATA',
+    payload: userData
+});
+```
+
+```js
+// ASYNC ACTION CREATOR (THUNK)
+export const fetchUserData = userId => {
+    return (dispatch) => {
+        fetch(`/api/user/${userId}`)
+            .then(response => response.json())
+            .then(data => dispatch(setUserData(data)));
+    };
+};
+```
+
+### why use action creators? - able to pass in arguments
