@@ -94,3 +94,4 @@ export const fetchUserData = userId => {
 ```
 
 ### why use action creators? - able to pass in arguments
+### why use async action creators (thunks)? - able to handle async operations
