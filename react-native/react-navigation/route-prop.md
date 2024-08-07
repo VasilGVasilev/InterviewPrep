@@ -18,3 +18,32 @@ function ProfileScreen({ route }) {
   );
 }
 ```
+
+**params**
+
+In React Navigation, the route object is automatically passed to the screen component by the navigator. The route object contains information about the current route, including any [parameters](https://reactnavigation.org/docs/navigation-prop/#navigate) that were passed to the route when navigating to it.
+
+```js
+export default function CAMERA({ route }) {
+}
+```
+
+**If {route} is accessible, where do we pass it in as an arg?**
+
+Look for the name:
+
+```js
+<Stack.Screen
+    name="camera"
+    component={CAMERA}
+    options={{ header: () => null }}
+/>
+```
+and where it is used with navigation.navigate('camera', XXX...):
+
+```js
+navigation && navigation.navigate('camera', {
+    label,
+    desc
+});
+```
