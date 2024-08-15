@@ -15,3 +15,6 @@ NB what tag to use once you have a base64Image with SignatureCanvas:
 - bgSrc: Expects a URL or a local file path, not a base64-encoded string.
 
 In summary, the difference is due to the specific functionalities and use cases each library is designed to handle. SketchCanvas is more versatile in handling various image sources, while SignatureCanvas focuses on capturing signatures and requires external handling for image files.
+
+
+Inn the react-native-signature-canvas library, **the return type of the signature is a Base64-encoded** string representing the image of the signature. This string typically starts with the prefix **data:image/png;base64**, followed by the Base64-encoded image data.
