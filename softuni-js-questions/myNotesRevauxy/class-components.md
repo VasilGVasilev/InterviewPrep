@@ -57,7 +57,20 @@ class SomeClass extends BaseClass {
 ```
 
 The main utility of a constructor is to implement props and add eventListeners, not that you cannot outside of it, but the constructor gets initialized first and evetnListeners are better to be init first, too.
+**Constructor is best suited for initialization**
 
+Accessing props without a constructor:
+```js
+class MyClass {
+  myMethod() {
+    console.log(this.myProperty); // Accessing properties passed to the instance
+  }
+}
+
+const instance = new MyClass();
+instance.myProperty = 'Hello, World!';
+instance.myMethod(); // Logs: Hello, World!
+```
 
 
 
