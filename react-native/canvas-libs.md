@@ -18,3 +18,134 @@ In summary, the difference is due to the specific functionalities and use cases 
 
 
 Inn the react-native-signature-canvas library, **the return type of the signature is a Base64-encoded** string representing the image of the signature. This string typically starts with the prefix **data:image/png;base64**, followed by the Base64-encoded image data.
+
+3. react native svg
+
+The most straightforward one. All you need is to set up the SVG and Paths (current and all). The current path is drawn by TouchMove + TouchEnd and some local state management:
+
+```js
+import React, {useState, useCallback} from 'react';
+import {View, StyleSheet, Dimensions, Pressable, Image} from 'react-native';
+import {Svg, Path} from 'react-native-svg';
+import {captureRef} from 'react-native-view-shot';
+import {readFile} from 'react-native-fs';
+
+const {width, height} = Dimensions.get('window');
+const MAX_PATHS = 100; // Maximum number of paths to store
+// TODO
+// add paths to parent state
+
+export default function DrawingPad({
+
+}) {
+  const [paths, setPaths] = useState([]);
+  const [currentPath, setCurrentPath] = useState([]);
+  const [isClearButtonClicked, setIsClearButtonClicked] = useState(false);
+
+  const onTouchEnd = useCallback(() => {
+    setPaths(prevPaths => {
+      const newPaths = [...prevPaths, ...currentPath]; // Flatten the paths
+      if (newPaths.length > MAX_PATHS) {
+        newPaths.splice(0, newPaths.length - MAX_PATHS); // Remove the oldest points if exceeding the limit
+      }
+      return newPaths;
+    });
+    setCurrentPath([]);
+    setIsClearButtonClicked(false);
+  }, [currentPath]);
+
+  const onTouchMove = useCallback(
+    e => {
+      const newPath = [...currentPath];
+      const locationX = e.nativeEvent.locationX;
+      const locationY = e.nativeEvent.locationY;
+
+      const newPoint = `${newPath.length === 0 ? 'M' : ''}${locationX.toFixed(
+        0,
+      )},${locationY.toFixed(0)}`;
+      newPath.push(newPoint);
+      setCurrentPath(newPath);
+    },
+    [currentPath],
+  );
+
+  const handleClearButtonClick = () => {
+    setPaths([]);
+    setCurrentPath([]);
+    setIsClearButtonClicked(true);
+  };
+
+
+  return (
+    <View style={styles.container}>
+      <View
+        style={styles.svgContainer}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}>
+          <Image
+            style={styles.backgroundImage}
+            source={{someBackgroundImageURL}}
+          />
+        <Svg>
+          <Path
+            d={paths.flat().join(' ')}
+            stroke={isClearButtonClicked ? 'transparent' : 'red'}
+            fill={'transparent'}
+            strokeWidth={3}
+          />
+          <Path
+            d={currentPath.join(' ')}
+            stroke={isClearButtonClicked ? 'transparent' : 'red'}
+            fill={'transparent'}
+            strokeWidth={3}
+          />
+        </Svg>
+      </View>
+         <Pressable
+            style={styles.clearButton}
+            onPress={handleClearButtonClick}>
+            <Text style={styles.clearIcon}> Clear <View/>
+         </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  svgContainer: {
+    height: height * 0.6,
+    width: width * 0.85,
+    backgroundColor: 'white',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+    zIndex: -1,
+  },
+  clearButton: {
+    marginTop: 10,
+    backgroundColor: 'red',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonBox: {
+    position: 'absolute',
+    bottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'stretch',
+    alignSelf: 'stretch',
+  },
+
+});
+```
