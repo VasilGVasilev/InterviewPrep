@@ -1,0 +1,1 @@
+This is more of a tip how to approach the docs but it occurred to me that **FlatList** has been used with a prop **contentContainerStyle** which is not part of the official docs, yet, ai research easily reveals **FlatList** internally uses **ScrollView** which does have **contentContainerStyle** as a prop.
