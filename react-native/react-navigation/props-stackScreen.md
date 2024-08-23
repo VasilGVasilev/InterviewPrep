@@ -1,3 +1,127 @@
+## Typical passing of components using the component prop of <Stack.Screen>:
+
+```js
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+## why go for the functional passing of the component:
+
+Using the `{props => <AppMagazine {...props} />}` syntax instead of the traditional way of passing a component into the component prop of `<Stack.Screen>` can be beneficial in several scenarios. Here are the key reasons:
+
+1. **Passing Additional Props**
+When you need to pass additional props to the component, the `{props => <AppMagazine {...props} />}` syntax allows you to do so easily. This is not possible with the traditional way of passing the component directly.
+
+```js
+<Stack.Screen 
+  name="Magazine" 
+  component={AppMagazine} 
+  // This won't work for passing additional props
+/>
+```
+
+Using the function syntax:
+```js
+<Stack.Screen 
+  name="Magazine" 
+  component={props => <AppMagazine {...props} extraProp="value" />} 
+/>
+```
+
+2. **Conditional Rendering**
+If you need to render different components or modify the component based on certain conditions, the function syntax provides the flexibility to do so.
+
+```js
+<Stack.Screen 
+  name="Magazine" 
+  component={props => {
+    if (someCondition) {
+      return <AppMagazine {...props} />;
+    } else {
+      return <AnotherComponent {...props} />;
+    }
+  }} 
+/>
+```
+
+3. **Accessing Navigation Props**
+When you use the function syntax, you have direct access to the navigation props (`navigation`, `route`, etc.) and can manipulate them or pass them down as needed.
+
+```js
+<Stack.Screen 
+  name="Magazine" 
+  component={props => {
+    const { navigation, route } = props;
+    // Perform some operations with navigation or route
+    return <AppMagazine {...props} />;
+  }} 
+/>
+```
+
+4. **Performance Optimization**
+In some cases, you might want to avoid re-rendering the entire component tree. The function syntax allows you to control when and how the component should re-render, potentially optimizing performance.
+
+```js
+<Stack.Screen 
+  name="Magazine" 
+  component={props => {
+    // Perform some memoization or optimization logic
+    return <AppMagazine {...props} />;
+  }} 
+/>
+```
+
+### Example
+Here is an example demonstrating the use of the function syntax to pass additional props and conditionally render components:
+
+```js
+function AppMagazine({ extraProp, ...props }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Magazine Screen - {extraProp}</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Magazine" 
+          component={props => <AppMagazine {...props} extraProp="Special Edition" />} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+### Summary
+Using the `{props => <AppMagazine {...props} />}` syntax provides greater flexibility and control over how components are rendered and how props are passed. It is particularly useful for passing additional props, conditional rendering, accessing navigation props, and optimizing performance.
+
+
+OLD THOUGHTS
+
 # Understanding that you can pass a child function to the Stack.
 
 Screen component comes from a deeper familiarity with React and React Navigation's flexibility. **While the React Navigation documentation might primarily showcase the component prop method for its simplicity, the child function approach leverages React's inherent capabilities.** Here are a few ways to understand how this pattern works and how to discover such features:
