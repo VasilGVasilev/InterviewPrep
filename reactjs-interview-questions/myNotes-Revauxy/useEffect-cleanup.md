@@ -17,3 +17,7 @@ The need to use cleanup function in useEffect, I want to unlock orientation of a
         };
     }, [route])
 ```
+
+- useEffect body: This code runs after the component mounts and re-runs whenever the dependencies in the array change. It's ideal for actions that need to happen after the component is rendered, like fetching data, setting up subscriptions, or adding event listeners.   
+
+- useEffect cleanup function: This code runs before the component unmounts and also before the next useEffect execution if dependencies change. It's crucial for cleaning up side effects, like removing event listeners, canceling subscriptions, or clearing intervals to prevent memory leaks. 
