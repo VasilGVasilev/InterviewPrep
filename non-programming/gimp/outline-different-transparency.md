@@ -36,3 +36,4 @@ Step 8: Make Outer Layer
 - Pencil the outer with color
 - Set outer layer opacity to 40.4%
 
+Step 9: Export
