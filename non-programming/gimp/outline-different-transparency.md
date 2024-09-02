@@ -1,4 +1,4 @@
-# Creating an outline of a car in GIMP that can be used as an overlay requires several steps. Here’s a step-by-step guide to help you achieve that:
+# Outline with different sets of transparency:
 
 Step 1: Open the Image
 - Open GIMP.
