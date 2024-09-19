@@ -1,4 +1,6 @@
+## Release APK
 ### To create a standalone APK for distribution without the need to upload to Google Play Store, you can follow these steps:
+
 
 1. Generate a keystore file if you don't have one. This is used to sign your app. Open a terminal and run:
 
@@ -56,3 +58,33 @@ cd android && ./gradlew assembleRelease
 ```
 
 This will generate a release APK named `app-release.apk` in the `android/app/build/outputs/apk/release/` directory in your project. This APK is a standalone package that includes everything your app needs to run and can be distributed and installed on any Android device.
+
+
+## Debug APK
+1. Enable Developer Mode and USB Debugging on the Android Device:
+    - Open Settings on your Android device.
+    - Go to About Phone.
+    - Tap on Build Number 7 times to enable Developer Options.
+    - Go back to Settings, scroll down to Developer Options.
+    - Enable USB Debugging.
+
+2. Connect Your Android Device
+    - Connect your Android device to your computer using a USB cable.
+```sh
+adb devices
+```
+3. Build and Install the APK
+    To install the APK on an Android device using React Native, follow these steps:
+```sh
+npx react-native run-android
+```
+This will build and install the app directly onto the connected Android device, similar to how Xcode does for iPhones.
+
+
+Alternatively, you can manually install the APK if you already have a pre-built APK (app-debug.apk):
+Manual APK installation:
+```sh
+cd android
+./gradlew assembleDebug
+adb install android/app/build/outputs/debug/app-debug.apk
+```
