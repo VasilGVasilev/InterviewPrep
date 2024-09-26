@@ -65,3 +65,6 @@ The { x, y } are the coordinates of the tap gesture, which are passed to the foc
     - ({ x, y }) immediately invokes this new function with the tap coordinates.
 
 **Using runOnJS is essential to ensure that your JavaScript functions are executed on the correct thread, The gesture handling might be happening on the UI thread, and calling a JavaScript function directly from the UI thread can cause issues.**
+
+### NB - GestureDetector grasps touch event throughout
+In react-native-gesture-handler, the gestures are detected based on the hierarchy and components you wrap with the GestureDetector. When using components like the camera (e.g., react-native-camera or react-native-vision-camera), the gesture handler interacts with its entire view or surface, even if there are intermediate components between the camera and GestureDetector. GestureDetector handles the gestures in its view regardless of the content between the GestureDetector and the camera component.
