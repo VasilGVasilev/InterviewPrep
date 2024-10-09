@@ -1,0 +1,1 @@
+There is an important detail in using transform: rotate, namely, which are the coordinates that the element will rotate around. you can manage this with [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin).
