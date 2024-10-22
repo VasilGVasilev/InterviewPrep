@@ -1,0 +1,1 @@
+If you shake your physical ios device, an inside of app inspector appears.
