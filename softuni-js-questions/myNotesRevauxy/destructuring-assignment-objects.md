@@ -27,7 +27,7 @@ const extractedScale = dimensions.scale // variable logs 2
 
 do: 
 ```js
-const { heigth: extractedHeight, width: extractedWidth, scale: extractedScale } = dimensions
+const { height: extractedHeight, width: extractedWidth, scale: extractedScale } = dimensions
 ```
 
 thus, extractedVariables capture so to speak the values of the keys via the above syntax const {key:value} = obj
