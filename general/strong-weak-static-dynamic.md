@@ -1,3 +1,43 @@
+### Static (at compile time)
+A language that has type bound to the variable, in Java:
+
+```java
+String s = 'abs'
+```
+**CANNOT** be changed to
+```java
+Integer s = 4
+```
+
+### Dynamic (at runtime)
+A language that has type not being bound to the variable, in PHP:
+
+```php
+$s = 'abs'
+```
+**CAN** be changed to
+```php
+$s = 4
+```
+
+
+### Strong
+A language that does not infer the type, in Ruby:
+
+```ruby
+val = "abc" + 123
+```
+will result in a runtime error
+
+### Weak
+A language that can infer the type, in JavaScript:
+
+```js
+m = 'abc' + 123
+```
+will result in valid abc123 string
+
+
 Use the following for basic differtentiation:
 
 Strong and static - Typescript
