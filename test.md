@@ -1,1 +1,1 @@
-testing out branches - pull reqeusts
+testing out branches - pull requests
