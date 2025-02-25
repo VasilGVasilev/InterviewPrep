@@ -1,0 +1,1 @@
+Swagger UI allows to visualize the API's resources without having any implementation logic in place. Basically, it generates a documentation of the APIs. [link](https://youtu.be/NFcWCtsy6oQ)
