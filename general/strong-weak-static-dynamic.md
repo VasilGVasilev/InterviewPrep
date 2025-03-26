@@ -1,3 +1,5 @@
+
+
 ### Static (at compile time)
 A language that has type bound to the variable, in Java:
 
@@ -20,6 +22,8 @@ $s = 'abs'
 $s = 4
 ```
 
+
+NB. Dynamic types are associated with runtime values - 'abs', 4, Compile types are associated with variables and/or functions set in the code.
 
 ### Strong
 A language that does not infer the type, in Ruby:
