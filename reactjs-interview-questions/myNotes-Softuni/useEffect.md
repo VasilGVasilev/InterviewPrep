@@ -2,7 +2,9 @@ Starting with the fact that useEffect is not recommended even by the React team 
 
 see ./public/useEffect-render-problem 
 
+### BUT CONCEPTUALLY ON DATA FETCHING
 
+In fact, useEffect is just a hook. But how is that some tool/hook/ of React will make a call outside of the main field of React - pure front end. The answer - React interacts with the browser. The browser (like node.js as a runtime environemnt) has server like capabilities WEB APIs. So neither react, nor useEffect communicates with the server. React triggers the WEB APIs via the useEffect hook. 
 
 
 Purpose: useEffect() helps you handle things that are outside the realm of React such as API calls, asynchronous events, and other **side effects**.
