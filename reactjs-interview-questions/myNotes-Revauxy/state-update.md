@@ -32,3 +32,5 @@ useEffect(() => {
 
 }, [selectedImage]);
 ```
+
+NB: you might be tempted to have both state values in the same dependency array of the same useEffect, but there might be problems with circular dependencies, inconsistent behaviour, performance concerns.
