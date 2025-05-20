@@ -1,0 +1,1 @@
+A race condition or race hazard is the condition of software, where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events, leading to unexpected or inconsistent results.
