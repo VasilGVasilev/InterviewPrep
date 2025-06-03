@@ -41,7 +41,8 @@ This copies your fonts to:
 
 2. Rebuild iOS app to apply changes:
    ```bash
-   cd ios && pod install && cd ..
+   cd ios && pod deintegrate && pod install && cd ..
+   npx react-native start --reset-cache
    npx react-native run-ios
    ```
 
