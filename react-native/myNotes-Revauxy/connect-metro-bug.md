@@ -15,3 +15,10 @@ npx react-native start --host <your-ip-address>
 4. choose bundler config
 
 5. enter the ip address and port number
+
+for android on the emulator :
+
+- cmd+m
+- settings
+- debug server host & port for device
+- enter localhost:port
