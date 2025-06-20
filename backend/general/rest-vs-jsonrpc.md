@@ -200,3 +200,23 @@ Returns:
 | RESTful?       | ✅ Yes                                | ❌ No                          |
 
 So, JSON-RPC is not RESTful because it doesn't follow the REST principles—it’s more about calling functions on a server than manipulating resources using standard web semantics.
+
+
+NB. a typical implementation on the server via node.js and express.js to receive the JSON-RPC request will be:
+
+```js
+app.post('/rpc', (req, res) => {
+  const { jsonrpc, method, params, id } = req.body;
+
+  if (method === 'getUser') {
+    const user = getUser(params.id);
+    res.json({ jsonrpc: "2.0", result: user, id });
+  } else {
+    res.json({
+      jsonrpc: "2.0",
+      error: { code: -32601, message: "Method not found" },
+      id
+    });
+  }
+});
+```
