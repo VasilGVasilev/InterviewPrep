@@ -128,7 +128,7 @@ REST (**RE**presentational **S**tate **T**ransfer) is an architectural style def
 
 ### ❌ Why JSON-RPC is *Not* RESTful
 
-**JSON-RPC** is a remote procedure call (RPC) protocol encoded in JSON. **It's designed to invoke methods (functions) on a server rather than operate on resources.**
+**JSON-RPC** is a remote procedure call (RPC) protocol encoded in JSON. <u>**It's designed to invoke methods (functions) on a server rather than operate on resources.**</u>
 
 Here's why it violates REST principles:
 
