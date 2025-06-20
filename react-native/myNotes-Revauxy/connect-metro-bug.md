@@ -22,3 +22,4 @@ for android on the emulator :
 - settings
 - debug server host & port for device
 - enter localhost:port
+- may have to try `adb reverse tcp:8081 tcp:8081`
