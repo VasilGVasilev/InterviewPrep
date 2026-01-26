@@ -1,6 +1,8 @@
 
 1. React top features:
 
+**JSX** is a special extention to make HTML be part of JS. One can apply the HTML in JS technique in .js files with .createElement() function or by adding the .js extention in the bundler, thus, allowing JSX template in a pure .js file.
+
 - JSX, a syntax extension allowing for JS be written directly in the HTML;
 - Unidirectional data flow
 - Virtual DOM because real DOM manipulations are expensive

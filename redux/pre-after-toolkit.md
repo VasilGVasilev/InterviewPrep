@@ -1,5 +1,5 @@
 This was the pre redux toolkit way:
-1. actions are separete and the file consists of:
+1. actions are separаte and the file consists of:
 - a variable to by passed into reducer's switch
 - the actual action to dispatch and its execution triggers one of the switch cases of the reducer
 2. reducers are separate:

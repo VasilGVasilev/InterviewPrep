@@ -10,6 +10,41 @@ How do Promises aliviate the situation? -> Instead of waiting for the value of t
 
 Mind that the blocks of code that are async, be that with .then() or async/await syntax are executed synchroniously, but the whole block is treated as if it is asynchronious in relation to the code.
 
+------------------------------------------------------------
+async/await
+```js
+console.log('A');
+async function foo() {
+  console.log('B');
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  console.log('C');
+}
+foo();
+console.log('D');
+```
+
+promise
+```js
+console.log('A');
+function foo() {
+  console.log('B');
+  new Promise(resolve => setTimeout(resolve, 1000))
+    .then(() => {
+      console.log('C');
+    });
+}
+foo();
+console.log('D');
+```
+
+- Async/await lets you write asynchronous code that looks synchronous.
+- When you use await, the function "pauses" at that point until the awaited Promise resolves, but only inside that async function.
+- Other code outside the async function keeps running—the main thread is not blocked.
+
+Comment: Thus, if you have some effect like a conditional screen happen based on some specific Redux state value, you may experience flicker if the thunk is not in async await.
+------------------------------------------------------------
+
+
 [!img](https://github.com/VasilGVasilev/InterviewPrep/tree/main/softuni-js-questions/myNotesRevauxy/async-basics/async.png)
 
 

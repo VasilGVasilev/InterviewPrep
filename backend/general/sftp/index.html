@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Revauxy demo chatbot</title>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden; /* Prevent scrolling */
+      }
+      .responsive-bg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+        object-fit: cover;
+        object-position: center;
+        max-width: 100vw;
+        max-height: 100vh;
+      }
+      @media (max-width: 600px) {
+        .responsive-bg {
+          width: 100vw;
+          height: 100vh;
+          object-fit: cover;
+          scale: 1.2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./background.png" class="responsive-bg" alt="Background">
+
+        <script defer type="text/javascript" src="https://Revauxy2.community.druidplatform.com/v2/druid_webchat_v2_load.js?botId=b8d23eb8-ca86-4e00-d46e-08dd8303e616&amp;baseUrl=https%3A%2F%2Fdruidapi.comm.eu.druidplatform.com">
+        </script>
+
+
+    <script>
+      // Adjust the height of the body to account for the keyboard
+      function adjustForKeyboard() {
+        const originalHeight = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          const currentHeight = window.innerHeight;
+          if (currentHeight < originalHeight) {
+            // Keyboard is visible
+            document.body.style.height = `${currentHeight}px`;
+          } else {
+            // Keyboard is hidden
+            document.body.style.height = '100%';
+          }
+        });
+      }
+
+      // Call the function to adjust for the keyboard
+      adjustForKeyboard();
+    </script>
+  </body>
+</html>
