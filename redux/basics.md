@@ -11,14 +11,20 @@ The store is where the state is stored, the reducers update this state via the a
 ### Action: 
 
 ```js
+
+// action creator
+
 const setUserAction = {
     type: 'SET_USER_DATA',
-    data: {
-        userName: 'JohnDoe',
-        email: 'john.doe@example.com'
-    }
+    data
 };
-dispatch(setUserAction);
+
+
+// thunk /async action creator/
+
+const someActionAsync = () => async (dispatch, getState) => {
+    await dispatch(setUserAction({userName: 'JohnDoe', email: 'john.doe@example.com'}));
+}
 ```
 
 ### Reducer:
