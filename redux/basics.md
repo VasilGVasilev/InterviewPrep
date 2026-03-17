@@ -70,6 +70,12 @@ Dispatch Actions: You dispatch actions to the store using the dispatch function.
 
 Reducers Handle Actions: The store forwards dispatched actions to the reducers. Each reducer checks the action type and updates the state accordingly.
 
+The Redux store has a method called dispatch. The only way to update the state is to call store.dispatch() and pass in an action object. The store will run its reducer function and save the new state value inside:
+```js
+// User triggers an event (e.g., form submit) -> dispatch
+store.dispatch(setUserAction({ userName: 'JohnDoe', email: 'john.doe@example.com' }));
+```
+
 
 # Redux AFTER TOOLKIT:
 
@@ -146,5 +152,3 @@ dispatch(setUserData({ userName: 'Jane', email: 'jane@example.com' }));
 - Encourages splitting logic into "slices" instead of separate files for actions/reducers.
 
 ---
-
-If you want, I can update your markdown file to reflect this new Redux Toolkit style. Let me know!
