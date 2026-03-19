@@ -34,3 +34,6 @@ const ParentComponent = () => {
 export default ParentComponent;
 ```
 In the example above, we use inputRef to access the ChildComponent's input html element and a combination of childRef, forwardRef and useImperativeHandle (ref is childRef) to access the ChildComponent methods (here, focus).
+
+
+The main thing is if we want separate sub components being clean or not. Children component like steps need their own submit funcitons. You either set the Steps' submit functions in the parent and have clutter or put each to their own. But how do you know to trigger the validation and possible other mechanism of a child component via clicking a button in the parent component. You use ref. You set it in the parent and pass it down to child components. In those child components, you use useImperativeHandle so that the click on the parent submit is tracable down to the Step component and connected to its personal submit function.
