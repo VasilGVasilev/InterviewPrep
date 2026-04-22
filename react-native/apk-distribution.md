@@ -88,3 +88,18 @@ cd android
 ./gradlew assembleDebug
 adb install android/app/build/outputs/debug/app-debug.apk
 ```
+
+
+
+
+
+CLAUDE recommends an easier way:
+
+1 edit android/app/build.gradle to have: 
+debuggableVariants = [] 
+uncomented in react{}
+
+2 run in terminal:
+```sh 
+./gradlew clean && ./gradlew assembleDebug
+```
